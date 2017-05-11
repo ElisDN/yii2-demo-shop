@@ -12,12 +12,9 @@ class SetUp implements BootstrapInterface
     {
         $container = \Yii::$container;
 
-        $container->setSingleton(UserPasswordResetService::class, [], [
-            [$app->params['supportEmail'] => $app->name . ' robot'],
-        ]);
+        $container->setSingleton(UserPasswordResetService::class);
 
         $container->setSingleton(ContactService::class, [], [
-            [$app->params['supportEmail'] => $app->name . ' robot'],
             $app->params['adminEmail']
         ]);
     }
