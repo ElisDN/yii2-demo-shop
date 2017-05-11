@@ -52,6 +52,6 @@ class SignupCest
             'email' => 'tester.email@example.com',
         ]);
 
-        $I->see('Logout (tester)', 'form button[type=submit]');
+        $I->see('Check your email for further instructions.');
     }
 }
