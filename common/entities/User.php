@@ -38,6 +38,23 @@ class User extends ActiveRecord implements IdentityInterface
         return $user;
     }
 
+    public function requestPasswordReset(): void
+    {
+        if (!empty($this->password_reset_token) && self::isPasswordResetTokenValid($this->password_reset_token)) {
+            throw new \DomainException('Password resetting is already requested.');
+        }
+        $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
+    }
+
+    public function resetPassword($password): void
+    {
+        if (empty($this->password_reset_token)) {
+            throw new \DomainException('Password resetting is not requested.');
+        }
+        $this->setPassword($password);
+        $this->password_reset_token = null;
+    }
+
     public function isActive(): bool
     {
         return $this->status === self::STATUS_ACTIVE;
@@ -173,7 +190,7 @@ class User extends ActiveRecord implements IdentityInterface
      *
      * @param string $password
      */
-    public function setPassword($password)
+    private function setPassword($password)
     {
         $this->password_hash = Yii::$app->security->generatePasswordHash($password);
     }
@@ -189,7 +206,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * Generates new password reset token
      */
-    public function generatePasswordResetToken()
+    private function generatePasswordResetToken()
     {
         $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
     }
@@ -197,7 +214,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * Removes password reset token
      */
-    public function removePasswordResetToken()
+    private function removePasswordResetToken()
     {
         $this->password_reset_token = null;
     }
