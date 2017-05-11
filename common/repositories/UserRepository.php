@@ -6,6 +6,11 @@ use common\entities\User;
 
 class UserRepository
 {
+    public function findByUsernameOrEmail($value): ?User
+    {
+        return User::find()->andWhere(['or', ['username' => $value], ['email' => $value]])->one();
+    }
+
     public function getByEmailConfirmToken($token): User
     {
         return $this->getBy(['email_confirm_token' => $token]);
