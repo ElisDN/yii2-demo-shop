@@ -12,6 +12,8 @@ use yii\authclient\AuthAction;
 
 class NetworkController extends Controller
 {
+    public $layout = 'cabinet';
+
     private $service;
 
     public function __construct($id, $module, NetworkService $service, $config = [])
