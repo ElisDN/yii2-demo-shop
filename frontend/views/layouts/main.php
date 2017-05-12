@@ -116,7 +116,7 @@ OwlCarouselAsset::register($this);
                                 <tr>
                                     <td class="text-center"><a
                                                 href="/index.php?route=product/product&amp;product_id=30"><img
-                                                    src="/image/cache/catalog/demo/canon_eos_5d_1-47x47.jpg"
+                                                    src="http://static.shop.dev/cache/products/canon_eos_5d_1-47x47.jpg"
                                                     alt="Canon EOS 5D" title="Canon EOS 5D" class="img-thumbnail"/></a>
                                     </td>
                                     <td class="text-left"><a
@@ -136,7 +136,7 @@ OwlCarouselAsset::register($this);
                                 <tr>
                                     <td class="text-center"><a
                                                 href="/index.php?route=product/product&amp;product_id=40"><img
-                                                    src="/image/cache/catalog/demo/iphone_1-47x47.jpg"
+                                                    src="http://static.shop.dev/cache/products/iphone_1-47x47.jpg"
                                                     alt="iPhone" title="iPhone" class="img-thumbnail"/></a>
                                     </td>
                                     <td class="text-left"><a
@@ -307,11 +307,11 @@ OwlCarouselAsset::register($this);
             <div id="slideshow0" class="owl-carousel" style="opacity: 1;">
                 <div class="item">
                     <a href="index.php?route=product/product&amp;path=57&amp;product_id=49"><img
-                                src="/image/cache/catalog/demo/banners/iPhone6-1140x380.jpg"
+                                src="http://static.shop.dev/cache/banners/iPhone6-1140x380.jpg"
                                 alt="iPhone 6" class="img-responsive"/></a>
                 </div>
                 <div class="item">
-                    <img src="/image/cache/catalog/demo/banners/MacBookAir-1140x380.jpg"
+                    <img src="http://static.shop.dev/cache/banners/MacBookAir-1140x380.jpg"
                          alt="MacBookAir" class="img-responsive"/>
                 </div>
             </div>
@@ -321,7 +321,7 @@ OwlCarouselAsset::register($this);
                     <div class="product-thumb transition">
                         <div class="image"><a
                                     href="/index.php?route=product/product&amp;product_id=43"><img
-                                        src="/image/cache/catalog/demo/macbook_1-200x200.jpg"
+                                        src="http://static.shop.dev/cache/products/macbook_1-200x200.jpg"
                                         alt="MacBook" title="MacBook" class="img-responsive"/></a></div>
                         <div class="caption">
                             <h4><a href="/index.php?route=product/product&amp;product_id=43">MacBook</a>
@@ -349,7 +349,7 @@ OwlCarouselAsset::register($this);
                     <div class="product-thumb transition">
                         <div class="image"><a
                                     href="/index.php?route=product/product&amp;product_id=40"><img
-                                        src="/image/cache/catalog/demo/iphone_1-200x200.jpg"
+                                        src="http://static.shop.dev/cache/products/iphone_1-200x200.jpg"
                                         alt="iPhone" title="iPhone" class="img-responsive"/></a></div>
                         <div class="caption">
                             <h4>
@@ -376,7 +376,7 @@ OwlCarouselAsset::register($this);
                     <div class="product-thumb transition">
                         <div class="image"><a
                                     href="/index.php?route=product/product&amp;product_id=42"><img
-                                        src="/image/cache/catalog/demo/apple_cinema_30-200x200.jpg"
+                                        src="http://static.shop.dev/cache/products/apple_cinema_30-200x200.jpg"
                                         alt="Apple Cinema 30&quot;" title="Apple Cinema 30&quot;"
                                         class="img-responsive"/></a></div>
                         <div class="caption">
@@ -404,7 +404,7 @@ OwlCarouselAsset::register($this);
                     <div class="product-thumb transition">
                         <div class="image"><a
                                     href="/index.php?route=product/product&amp;product_id=30"><img
-                                        src="/image/cache/catalog/demo/canon_eos_5d_1-200x200.jpg"
+                                        src="http://static.shop.dev/cache/products/canon_eos_5d_1-200x200.jpg"
                                         alt="Canon EOS 5D" title="Canon EOS 5D" class="img-responsive"/></a></div>
                         <div class="caption">
                             <h4><a href="/index.php?route=product/product&amp;product_id=30">Canon
@@ -430,47 +430,47 @@ OwlCarouselAsset::register($this);
             </div>
             <div id="carousel0" class="owl-carousel">
                 <div class="item text-center">
-                    <img src="/image/cache/catalog/demo/manufacturer/nfl-130x100.png" alt="NFL"
+                    <img src="http://static.shop.dev/cache/manufacturers/nfl-130x100.png" alt="NFL"
                          class="img-responsive"/>
                 </div>
                 <div class="item text-center">
-                    <img src="/image/cache/catalog/demo/manufacturer/redbull-130x100.png"
+                    <img src="http://static.shop.dev/cache/manufacturers/redbull-130x100.png"
                          alt="RedBull" class="img-responsive"/>
                 </div>
                 <div class="item text-center">
-                    <img src="/image/cache/catalog/demo/manufacturer/sony-130x100.png" alt="Sony"
+                    <img src="http://static.shop.dev/cache/manufacturers/sony-130x100.png" alt="Sony"
                          class="img-responsive"/>
                 </div>
                 <div class="item text-center">
-                    <img src="/image/cache/catalog/demo/manufacturer/cocacola-130x100.png"
+                    <img src="http://static.shop.dev/cache/manufacturers/cocacola-130x100.png"
                          alt="Coca Cola" class="img-responsive"/>
                 </div>
                 <div class="item text-center">
-                    <img src="/image/cache/catalog/demo/manufacturer/burgerking-130x100.png"
+                    <img src="http://static.shop.dev/cache/manufacturers/burgerking-130x100.png"
                          alt="Burger King" class="img-responsive"/>
                 </div>
                 <div class="item text-center">
-                    <img src="/image/cache/catalog/demo/manufacturer/canon-130x100.png" alt="Canon"
+                    <img src="http://static.shop.dev/cache/manufacturers/canon-130x100.png" alt="Canon"
                          class="img-responsive"/>
                 </div>
                 <div class="item text-center">
-                    <img src="/image/cache/catalog/demo/manufacturer/harley-130x100.png"
+                    <img src="http://static.shop.dev/cache/manufacturers/harley-130x100.png"
                          alt="Harley Davidson" class="img-responsive"/>
                 </div>
                 <div class="item text-center">
-                    <img src="/image/cache/catalog/demo/manufacturer/dell-130x100.png" alt="Dell"
+                    <img src="http://static.shop.dev/cache/manufacturers/dell-130x100.png" alt="Dell"
                          class="img-responsive"/>
                 </div>
                 <div class="item text-center">
-                    <img src="/image/cache/catalog/demo/manufacturer/disney-130x100.png"
+                    <img src="http://static.shop.dev/cache/manufacturers/disney-130x100.png"
                          alt="Disney" class="img-responsive"/>
                 </div>
                 <div class="item text-center">
-                    <img src="/image/cache/catalog/demo/manufacturer/starbucks-130x100.png"
+                    <img src="http://static.shop.dev/cache/manufacturers/starbucks-130x100.png"
                          alt="Starbucks" class="img-responsive"/>
                 </div>
                 <div class="item text-center">
-                    <img src="/image/cache/catalog/demo/manufacturer/nintendo-130x100.png"
+                    <img src="http://static.shop.dev/cache/manufacturers/nintendo-130x100.png"
                          alt="Nintendo" class="img-responsive"/>
                 </div>
             </div>
