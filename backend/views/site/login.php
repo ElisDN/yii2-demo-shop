@@ -5,7 +5,7 @@ use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \common\forms\LoginForm */
+/* @var $model \shop\forms\auth\LoginForm */
 
 $this->title = 'Sign In';
 
