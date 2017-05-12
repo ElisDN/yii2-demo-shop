@@ -3,3 +3,5 @@ backend-access.log
 backend-error.log
 frontend-access.log
 frontend-error.log
+static-access.log
+static-error.log
