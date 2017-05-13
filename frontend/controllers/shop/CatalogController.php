@@ -117,6 +117,8 @@ class CatalogController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
 
+        $this->layout = 'blank';
+
         return $this->render('product', [
             'product' => $product,
         ]);
