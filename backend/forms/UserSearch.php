@@ -9,7 +9,8 @@ use shop\entities\User\User;
 class UserSearch extends Model
 {
     public $id;
-    public $created_at;
+    public $date_from;
+    public $date_to;
     public $username;
     public $email;
     public $status;
@@ -17,8 +18,9 @@ class UserSearch extends Model
     public function rules()
     {
         return [
-            [['id', 'status', 'created_at'], 'integer'],
+            [['id', 'status'], 'integer'],
             [['username', 'email'], 'safe'],
+            [['date_from', 'date_to'], 'date', 'format' => 'php:Y-m-d'],
         ];
     }
 
@@ -44,12 +46,13 @@ class UserSearch extends Model
         $query->andFilterWhere([
             'id' => $this->id,
             'status' => $this->status,
-            'created_at' => $this->created_at,
         ]);
 
         $query
             ->andFilterWhere(['like', 'username', $this->username])
-            ->andFilterWhere(['like', 'email', $this->email]);
+            ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['>=', 'created_at', $this->date_from ? strtotime($this->date_from . ' 00:00:00') : null])
+            ->andFilterWhere(['<=', 'created_at', $this->date_to ? strtotime($this->date_to . ' 23:59:59') : null]);
 
         return $dataProvider;
     }
