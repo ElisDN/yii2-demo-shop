@@ -15,7 +15,7 @@ class LoginCest
                 'dataFile' => codecept_data_dir() . 'login_data.php'
             ]
         ]);
-        $I->amOnRoute('site/login');
+        $I->amOnRoute('auth/auth/login');
     }
 
     protected function formParams($login, $password)
