@@ -202,6 +202,7 @@ AppAsset::register($this);
         'options' => ['class' => 'nav navbar-nav'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'Catalog', 'url' => ['/shop/catalog/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/contact/index']],
         ],
