@@ -9,7 +9,7 @@ class ContactCest
 {
     public function _before(FunctionalTester $I)
     {
-        $I->amOnPage(['site/contact']);
+        $I->amOnPage(['contact/index']);
     }
 
     public function checkContact(FunctionalTester $I)
