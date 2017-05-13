@@ -2,9 +2,13 @@
 
 /* @var $this yii\web\View */
 
+use frontend\assets\MagnificPopupAsset;
+
 $this->title = 'HP LP3065';
 $this->params['breadcrumbs'][] = ['label' => 'Catalog', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
+MagnificPopupAsset::register($this);
 ?>
 
 <div class="row">
@@ -145,6 +149,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 </div>
 
+<!--
 <script type="text/javascript">
     $('#button-cart').on('click', function() {
         $.ajax({
@@ -199,18 +204,18 @@ $this->params['breadcrumbs'][] = $this->title;
         });
     });
 </script>
+-->
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('.thumbnails').magnificPopup({
-            type:'image',
-            delegate: 'a',
-            gallery: {
-                enabled:true
-            }
-        });
-    });
-</script>
+<?php $js = <<<EOD
+$('.thumbnails').magnificPopup({
+    type: 'image',
+    delegate: 'a',
+    gallery: {
+        enabled:true
+    }
+});
+EOD;
+$this->registerJs($js); ?>
 
 
 
