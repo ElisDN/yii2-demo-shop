@@ -72,8 +72,12 @@ AppAsset::register($this);
                                         class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span
                                 class="hidden-xs hidden-sm hidden-md">My Account</span> <span class="caret"></span></a>
                     <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a href="/index.php?route=account/register">Register</a></li>
-                        <li><a href="/index.php?route=account/login">Login</a></li>
+                        <?php if (Yii::$app->user->isGuest): ?>
+                            <li><a href="<?= Html::encode(Url::to(['/auth/auth/login'])) ?>">Login</a></li>
+                            <li><a href="<?= Html::encode(Url::to(['/auth/signup/request'])) ?>">Signup</a></li>
+                        <?php else: ?>
+                            <li><a href="<?= Html::encode(Url::to(['/auth/auth/logout'])) ?>" data-method="post">Logout</a></li>
+                        <?php endif; ?>
                     </ul>
                 </li>
                 <li><a href="/index.php?route=account/wishlist" id="wishlist-total"
@@ -194,27 +198,13 @@ AppAsset::register($this);
             'id' => 'menu',
         ],
     ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/contact/index']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/auth/signup/request']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/auth/auth/login']];
-    } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/auth/auth/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->id . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
     echo Nav::widget([
         'options' => ['class' => 'nav navbar-nav'],
-        'items' => $menuItems,
+        'items' => [
+            ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'About', 'url' => ['/site/about']],
+            ['label' => 'Contact', 'url' => ['/contact/index']],
+        ],
     ]);
     NavBar::end();
     ?>
