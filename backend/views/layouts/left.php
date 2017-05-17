@@ -31,7 +31,7 @@
                 'options' => ['class' => 'sidebar-menu'],
                 'items' => [
                     ['label' => 'Управление', 'options' => ['class' => 'header']],
-                    ['label' => 'Пользователи', 'icon' => 'user', 'url' => ['/user/index']],
+                    ['label' => 'Пользователи', 'icon' => 'user', 'url' => ['/user/index'], 'active' => Yii::$app->controller->id == 'user'],
                 ],
             ]
         ) ?>
