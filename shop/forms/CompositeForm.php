@@ -8,7 +8,7 @@ use yii\helpers\ArrayHelper;
 abstract class CompositeForm extends Model
 {
     /**
-     * @var Model[]
+     * @var Model[]|array[]
      */
     private $forms = [];
 
@@ -18,7 +18,11 @@ abstract class CompositeForm extends Model
     {
         $success = parent::load($data, $formName);
         foreach ($this->forms as $name => $form) {
-            $success = $form->load($data, $formName !== '' ? null : $name) && $success;
+            if (is_array($form)) {
+                $success = Model::loadMultiple($form, $data, $formName ? null : $name) && $success;
+            } else {
+                $success = $form->load($data, $formName !== '' ? null : $name) && $success;
+            }
         }
         return $success;
     }
@@ -28,8 +32,12 @@ abstract class CompositeForm extends Model
         $parentNames = array_filter($attributeNames, 'is_string');
         $success = parent::validate($parentNames, $clearErrors);
         foreach ($this->forms as $name => $form) {
-            $innerNames = ArrayHelper::getValue($attributeNames, $name);
-            $success = $form->validate($innerNames, $clearErrors) && $success;
+            if (is_array($form)) {
+                $success = Model::validateMultiple($form) && $success;
+            } else {
+                $innerNames = ArrayHelper::getValue($attributeNames, $name);
+                $success = $form->validate($innerNames, $clearErrors) && $success;
+            }
         }
         return $success;
     }
