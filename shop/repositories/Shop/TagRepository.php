@@ -14,6 +14,11 @@ class TagRepository
         return $tag;
     }
 
+    public function findByName($name): Tag
+    {
+        return Tag::findOne(['name' => $name]);
+    }
+
     public function save(Tag $tag): void
     {
         if (!$tag->save()) {
