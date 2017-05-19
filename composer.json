@@ -23,7 +23,8 @@
         "la-haute-societe/yii2-save-relations-behavior": "^1.2",
         "yiisoft/yii2-authclient": "^2.1",
         "kartik-v/yii2-widgets": "*",
-        "kartik-v/yii2-field-range": "*"
+        "kartik-v/yii2-field-range": "*",
+        "paulzi/yii2-nested-sets": "^1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
