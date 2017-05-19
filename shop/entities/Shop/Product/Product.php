@@ -312,36 +312,31 @@ class Product extends ActiveRecord
 
     public function editReview($id, $vote, $text): void
     {
-        $reviews = $this->reviews;
-        foreach ($reviews as $i => $review) {
-            if ($review->isIdEqualTo($id)) {
-                $review->edit($vote, $text);
-                $this->updateReviews($reviews);
-                return;
-            }
-        }
-        throw new \DomainException('Review is not found.');
+        $this->doWithReview($id, function (Review $review) use ($vote, $text) {
+            $review->edit($vote, $text);
+        });
     }
 
     public function activateReview($id): void
     {
-        $reviews = $this->reviews;
-        foreach ($reviews as $i => $review) {
-            if ($review->isIdEqualTo($id)) {
-                $review->activate();
-                $this->updateReviews($reviews);
-                return;
-            }
-        }
-        throw new \DomainException('Review is not found.');
+        $this->doWithReview($id, function (Review $review) {
+            $review->activate();
+        });
     }
 
     public function draftReview($id): void
     {
+        $this->doWithReview($id, function (Review $review) {
+            $review->draft();
+        });
+    }
+
+    private function doWithReview($id, callable $callback): void
+    {
         $reviews = $this->reviews;
-        foreach ($reviews as $i => $review) {
+        foreach ($reviews as $review) {
             if ($review->isIdEqualTo($id)) {
-                $review->draft();
+                $callback($review);
                 $this->updateReviews($reviews);
                 return;
             }
