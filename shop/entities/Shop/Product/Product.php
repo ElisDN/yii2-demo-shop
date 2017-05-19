@@ -27,6 +27,7 @@ use yii\web\UploadedFile;
  * @property Category $category
  * @property CategoryAssignment[] $categoryAssignments
  * @property TagAssignment[] $tagAssignments
+ * @property RelatedAssignment[] $relatedAssignments
  * @property Value[] $values
  * @property Photo[] $photos
  */
@@ -207,6 +208,33 @@ class Product extends ActiveRecord
         $this->photos = $photos;
     }
 
+    // Related products
+
+    public function assignRelatedProduct($id): void
+    {
+        $assignments = $this->relatedAssignments;
+        foreach ($assignments as $assignment) {
+            if ($assignment->isForProduct($id)) {
+                return;
+            }
+        }
+        $assignments[] = CategoryAssignment::create($id);
+        $this->relatedAssignments = $assignments;
+    }
+
+    public function revokeRelatedProduct($id): void
+    {
+        $assignments = $this->relatedAssignments;
+        foreach ($assignments as $i => $assignment) {
+            if ($assignment->isForProduct($id)) {
+                unset($assignments[$i]);
+                $this->relatedAssignments = $assignments;
+                return;
+            }
+        }
+        throw new \DomainException('Assignment is not found.');
+    }
+
     public function getBrand(): ActiveQuery
     {
         return $this->hasOne(Brand::class, ['id' => 'brand_id']);
@@ -232,6 +260,11 @@ class Product extends ActiveRecord
         return $this->hasOne(Photo::class, ['product_id' => 'id'])->orderBy('sort');
     }
 
+    public function getRelatedAssignments(): ActiveQuery
+    {
+        return $this->hasOne(RelatedAssignment::class, ['product_id' => 'id']);
+    }
+
     ##########################
 
     public static function tableName(): string
@@ -245,7 +278,7 @@ class Product extends ActiveRecord
             MetaBehavior::className(),
             [
                 'class' => SaveRelationsBehavior::className(),
-                'relations' => ['categoryAssignments', 'tagAssignments', 'values', 'photos'],
+                'relations' => ['categoryAssignments', 'tagAssignments', 'relatedAssignments', 'values', 'photos'],
             ],
         ];
     }
