@@ -20,6 +20,8 @@ use yii\db\ActiveRecord;
  * @property Meta $meta
  *
  * @property Category $parent
+ * @property Category $prev
+ * @property Category $next
  * @mixin NestedSetsBehavior
  */
 class Category extends ActiveRecord
