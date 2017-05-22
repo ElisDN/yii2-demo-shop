@@ -95,6 +95,11 @@ a.desc:after {
     margin: 0 0 15px 0;
 }
 
+div.required label.control-label:after {
+    content: " *";
+    color: red;
+}
+
 /* align the logout "link" (button in form) of the navbar */
 .nav li > form > button.logout {
     padding: 15px;
