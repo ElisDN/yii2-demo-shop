@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f2669ea8c81b299f3bba743f79a89b2e",
+    "content-hash": "3a1a21c3d34670ebe74ebaca5302ec61",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -62,6 +62,22 @@
             },
             "require": {
                 "bower-asset/jquery": ">=1.9.1,<4.0"
+            },
+            "type": "bower-asset"
+        },
+        {
+            "name": "bower-asset/font-awesome",
+            "version": "v4.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FortAwesome/Font-Awesome.git",
+                "reference": "a8386aae19e200ddb0f6845b5feeee5eb7013687"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/a8386aae19e200ddb0f6845b5feeee5eb7013687",
+                "reference": "a8386aae19e200ddb0f6845b5feeee5eb7013687",
+                "shasum": null
             },
             "type": "bower-asset"
         },
