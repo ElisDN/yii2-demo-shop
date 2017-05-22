@@ -25,7 +25,8 @@
         "kartik-v/yii2-widgets": "*",
         "kartik-v/yii2-field-range": "*",
         "paulzi/yii2-nested-sets": "^1.0",
-        "yii-dream-team/yii2-upload-behavior": "^1.1"
+        "yii-dream-team/yii2-upload-behavior": "^1.1",
+        "bower-asset/font-awesome": "^4.7"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

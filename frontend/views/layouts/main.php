@@ -1,3 +1,15 @@
+<?php
+
+/* @var $this \yii\web\View */
+/* @var $content string */
+
+use frontend\assets\AppAsset;
+use yii\helpers\Html;
+use yii\helpers\Url;
+
+AppAsset::register($this);
+?>
+<?php $this->beginPage() ?>
 <!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <!--[if IE 8 ]><html dir="ltr" lang="en" class="ie8"><![endif]-->
@@ -6,25 +18,17 @@
 <html dir="ltr" lang="en">
 <!--<![endif]-->
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Your Store</title>
-    <base href="/"/>
-    <meta name="description" content="My Store"/>
-    <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
-    <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
-    <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css"/>
-    <link href="catalog/view/theme/default/stylesheet/stylesheet.css" rel="stylesheet">
-    <link href="catalog/view/javascript/jquery/owl-carousel/owl.carousel.css" type="text/css" rel="stylesheet"
-          media="screen"/>
-    <script src="catalog/view/javascript/common.js" type="text/javascript"></script>
-    <link href="/image/catalog/cart.png" rel="icon"/>
-    <script src="catalog/view/javascript/jquery/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>
+    <meta charset="<?= Yii::$app->charset ?>"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <?= Html::csrfMetaTags() ?>
+    <title><?= Html::encode($this->title) ?></title>
+    <link href="<?= Html::encode(Url::canonical()) ?>" rel="canonical"/>
+    <link href="<?= Yii::getAlias('@web/images/catalog/cart.png') ?>" rel="icon"/>
+    <?php $this->head() ?>
 </head>
 <body class="common-home">
+<?php $this->beginBody() ?>
 <nav id="top">
     <div class="container">
         <div class="pull-left">
@@ -538,12 +542,7 @@
     </div>
 </footer>
 
-<!--
-OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
-Please donate via PayPal to donate@opencart.com
-//-->
-
-<!-- Theme created by Welford Media for OpenCart 2.0 www.welfordmedia.co.uk -->
-
+<?php $this->endBody() ?>
 </body>
 </html>
+<?php $this->endPage() ?>
