@@ -29,6 +29,7 @@ class ProductEditForm extends CompositeForm
         $this->name = $product->name;
         $this->description = $product->description;
         $this->meta = new MetaForm($product->meta);
+        $this->categories = new CategoriesForm($product);
         $this->tags = new TagsForm($product);
         $this->values = array_map(function (Characteristic $characteristic) use ($product) {
             return new ValueForm($characteristic, $product->getValue($characteristic->id));
