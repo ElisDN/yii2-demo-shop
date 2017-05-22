@@ -16,6 +16,7 @@ use yii\web\UploadedFile;
  * @property integer $created_at
  * @property string $code
  * @property string $name
+ * @property string $description
  * @property integer $category_id
  * @property integer $brand_id
  * @property integer $price_old
@@ -38,13 +39,14 @@ class Product extends ActiveRecord
 {
     public $meta;
 
-    public static function create($brandId, $categoryId, $code, $name, Meta $meta): self
+    public static function create($brandId, $categoryId, $code, $name, $description, Meta $meta): self
     {
         $product = new static();
         $product->brand_id = $brandId;
         $product->category_id = $categoryId;
         $product->code = $code;
         $product->name = $name;
+        $product->description = $description;
         $product->meta = $meta;
         $product->created_at = time();
         return $product;
@@ -56,11 +58,12 @@ class Product extends ActiveRecord
         $this->price_old = $old;
     }
 
-    public function edit($brandId, $code, $name, Meta $meta): void
+    public function edit($brandId, $code, $name, $description, Meta $meta): void
     {
         $this->brand_id = $brandId;
         $this->code = $code;
         $this->name = $name;
+        $this->description = $description;
         $this->meta = $meta;
     }
 
