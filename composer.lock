@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a1a21c3d34670ebe74ebaca5302ec61",
+    "content-hash": "69d258863f1ab367fefeaa3edd048c6b",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -113,6 +113,25 @@
             },
             "require": {
                 "bower-asset/jquery": ">=1.7"
+            },
+            "type": "bower-asset"
+        },
+        {
+            "name": "bower-asset/owl.carousel",
+            "version": "2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/OwlCarousel2/OwlCarousel2.git",
+                "reference": "716474f2335242aa24b2d79c554b3496922c22bd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/OwlCarousel2/OwlCarousel2/zipball/716474f2335242aa24b2d79c554b3496922c22bd",
+                "reference": "716474f2335242aa24b2d79c554b3496922c22bd",
+                "shasum": null
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.8.3"
             },
             "type": "bower-asset"
         },
