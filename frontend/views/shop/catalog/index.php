@@ -10,22 +10,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <h1><?= Html::encode($this->title) ?></h1>
 
-<div class="row">
-    <div class="col-sm-2"><img src="http://static.shop.dev/cache/products/compaq_presario-80x80.jpg" alt="Desktops" title="Desktops" class="img-thumbnail" /></div>
-    <div class="col-sm-10"><p>
-            Example of category description text</p>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <a href="/index.php?route=product/category&amp;path=20_26">PC (0)</a> | <a href="/index.php?route=product/category&amp;path=20_27">Mac (1)</a>
     </div>
 </div>
-<hr>
-<h3>Refine Search</h3>
-<div class="row">
-    <div class="col-sm-3">
-        <ul>
-            <li><a href="/index.php?route=product/category&amp;path=20_26">PC (0)</a></li>
-            <li><a href="/index.php?route=product/category&amp;path=20_27">Mac (1)</a></li>
-        </ul>
-    </div>
-</div>
+
 <div class="row">
     <div class="col-md-2 col-sm-6 hidden-xs">
         <div class="btn-group btn-group-sm">
