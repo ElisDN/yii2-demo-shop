@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 /* @var $product shop\entities\Shop\Product\Product */
 /* @var $cartForm shop\forms\Shop\AddToCartForm */
+/* @var $reviewForm shop\forms\Shop\ReviewForm */
 
 use frontend\assets\MagnificPopupAsset;
 use shop\helpers\PriceHelper;
@@ -76,43 +77,32 @@ MagnificPopupAsset::register($this);
                 </table>
             </div>
             <div class="tab-pane" id="tab-review">
-                <form class="form-horizontal" id="form-review">
-                    <div id="review"></div>
-                    <h2>Write a review</h2>
-                    <div class="form-group required">
-                        <div class="col-sm-12">
-                            <label class="control-label" for="input-name">Your Name</label>
-                            <input type="text" name="name" value="" id="input-name" class="form-control" />
+                <div id="review"></div>
+                <h2>Write a review</h2>
+
+                <?php if (Yii::$app->user->isGuest): ?>
+
+                    <div class="panel-panel-info">
+                        <div class="panel-body">
+                            Please <?= Html::a('Log In', ['/auth/auth/login']) ?> for writing a review.
                         </div>
                     </div>
-                    <div class="form-group required">
-                        <div class="col-sm-12">
-                            <label class="control-label" for="input-review">Your Review</label>
-                            <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
-                            <div class="help-block"><span class="text-danger">Note:</span> HTML is not translated!</div>
-                        </div>
+
+                <?php else: ?>
+
+                    <?php $form = ActiveForm::begin(['id' => 'form-review']) ?>
+
+                    <?= $form->field($reviewForm, 'vote')->dropDownList($reviewForm->votesList(), ['prompt' => '--- Select ---']) ?>
+                    <?= $form->field($reviewForm, 'text')->textarea(['rows' => 5]) ?>
+
+                    <div class="form-group">
+                        <?= Html::submitButton('Send', ['class' => 'btn btn-primary btn-lg btn-block']) ?>
                     </div>
-                    <div class="form-group required">
-                        <div class="col-sm-12">
-                            <label class="control-label">Rating</label>
-                            &nbsp;&nbsp;&nbsp; Bad&nbsp;
-                            <input type="radio" name="rating" value="1" />
-                            &nbsp;
-                            <input type="radio" name="rating" value="2" />
-                            &nbsp;
-                            <input type="radio" name="rating" value="3" />
-                            &nbsp;
-                            <input type="radio" name="rating" value="4" />
-                            &nbsp;
-                            <input type="radio" name="rating" value="5" />
-                            &nbsp;Good</div>
-                    </div>
-                    <div class="buttons clearfix">
-                        <div class="pull-right">
-                            <button type="button" id="button-review" data-loading-text="Loading..." class="btn btn-primary">Continue</button>
-                        </div>
-                    </div>
-                </form>
+
+                    <?php ActiveForm::end() ?>
+
+                <?php endif; ?>
+
             </div>
         </div>
     </div>
