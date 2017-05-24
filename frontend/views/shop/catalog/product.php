@@ -1,8 +1,10 @@
 <?php
 
 /* @var $this yii\web\View */
+/* @var $product shop\entities\Shop\Product\Product */
 
 use frontend\assets\MagnificPopupAsset;
+use yii\helpers\Html;
 
 $this->title = 'HP LP3065';
 $this->params['breadcrumbs'][] = ['label' => 'Catalog', 'url' => ['index']];
@@ -14,9 +16,21 @@ MagnificPopupAsset::register($this);
 <div class="row">
     <div class="col-sm-8">
         <ul class="thumbnails">
-            <li><a class="thumbnail" href="http://static.shop.dev/cache/products/hp_1-500x500.jpg" title="HP LP3065"><img src="http://static.shop.dev/cache/products/hp_1-228x228.jpg" title="HP LP3065" alt="HP LP3065" /></a></li>
-            <li class="image-additional"><a class="thumbnail" href="http://static.shop.dev/cache/products/hp_3-500x500.jpg" title="HP LP3065"> <img src="http://static.shop.dev/cache/products/hp_3-74x74.jpg" title="HP LP3065" alt="HP LP3065" /></a></li>
-            <li class="image-additional"><a class="thumbnail" href="http://static.shop.dev/cache/products/hp_2-500x500.jpg" title="HP LP3065"> <img src="http://static.shop.dev/cache/products/hp_2-74x74.jpg" title="HP LP3065" alt="HP LP3065" /></a></li>
+            <?php foreach ($product->photos as $i => $photo): ?>
+                <?php if ($i == 0): ?>
+                    <li>
+                        <a class="thumbnail" href="<?= $photo->getUploadedFileUrl('file') ?>">
+                            <img src="<?= $photo->getThumbFileUrl('file', 'catalog_product_main') ?>" alt="<?= Html::encode($product->name) ?>" />
+                        </a>
+                    </li>
+                <?php else: ?>
+                    <li class="image-additional">
+                        <a class="thumbnail" href="<?= $photo->getUploadedFileUrl('file') ?>" title="HP LP3065">
+                            <img src="<?= $photo->getThumbFileUrl('file', 'catalog_product_additional') ?>" alt="" />
+                        </a>
+                    </li>
+                <?php endif; ?>
+            <?php endforeach; ?>
         </ul>
         <ul class="nav nav-tabs">
             <li class="active"><a href="#tab-description" data-toggle="tab">Description</a></li>
