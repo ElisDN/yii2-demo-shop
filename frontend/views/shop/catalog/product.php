@@ -28,13 +28,13 @@ MagnificPopupAsset::register($this);
             <?php foreach ($product->photos as $i => $photo): ?>
                 <?php if ($i == 0): ?>
                     <li>
-                        <a class="thumbnail" href="<?= $photo->getUploadedFileUrl('file') ?>">
+                        <a class="thumbnail" href="<?= $photo->getThumbFileUrl('file', 'catalog_origin') ?>">
                             <img src="<?= $photo->getThumbFileUrl('file', 'catalog_product_main') ?>" alt="<?= Html::encode($product->name) ?>" />
                         </a>
                     </li>
                 <?php else: ?>
                     <li class="image-additional">
-                        <a class="thumbnail" href="<?= $photo->getUploadedFileUrl('file') ?>" title="HP LP3065">
+                        <a class="thumbnail" href="<?= $photo->getThumbFileUrl('file', 'catalog_origin') ?>" title="HP LP3065">
                             <img src="<?= $photo->getThumbFileUrl('file', 'catalog_product_additional') ?>" alt="" />
                         </a>
                     </li>
