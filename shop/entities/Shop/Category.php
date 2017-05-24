@@ -49,6 +49,16 @@ class Category extends ActiveRecord
         $this->meta = $meta;
     }
 
+    public function getSeoTitle(): string
+    {
+        return $this->meta->title ?: $this->getHeadingTile();
+    }
+
+    public function getHeadingTile(): string
+    {
+        return $this->title ?: $this->name;
+    }
+
     public static function tableName(): string
     {
         return '{{%shop_categories}}';
