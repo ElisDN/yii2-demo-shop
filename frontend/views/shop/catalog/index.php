@@ -1,8 +1,10 @@
 <?php
 
 /* @var $this yii\web\View */
+/* @var $category shop\entities\Shop\Category */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 $this->title = 'Catalog';
 $this->params['breadcrumbs'][] = $this->title;
@@ -12,7 +14,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="panel panel-default">
     <div class="panel-body">
-        <a href="/index.php?route=product/category&amp;path=20_26">PC (0)</a> | <a href="/index.php?route=product/category&amp;path=20_27">Mac (1)</a>
+        <?php foreach ($category->children as $child): ?>
+            <a href="<?= Html::encode(Url::to(['category', 'id' => $child->id])) ?>"><?= Html::encode($child->name) ?></a> &nbsp;
+        <?php endforeach; ?>
     </div>
 </div>
 
