@@ -489,9 +489,9 @@ class Product extends ActiveRecord
     public function afterSave($insert, $changedAttributes): void
     {
         $related = $this->getRelatedRecords();
+        parent::afterSave($insert, $changedAttributes);
         if (array_key_exists('mainPhoto', $related)) {
             $this->updateAttributes(['main_photo_id' => $related['mainPhoto'] ? $related['mainPhoto']->id : null]);
         }
-        parent::afterSave($insert, $changedAttributes);
     }
 }
