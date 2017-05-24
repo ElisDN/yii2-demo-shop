@@ -110,6 +110,11 @@ class Product extends ActiveRecord
         return $this->status == self::STATUS_DRAFT;
     }
 
+    public function getSeoTitle(): string
+    {
+        return $this->meta->title ?: $this->name;
+    }
+
     public function setValue($id, $value): void
     {
         $values = $this->values;
