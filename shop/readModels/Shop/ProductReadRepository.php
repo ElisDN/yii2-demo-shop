@@ -75,6 +75,9 @@ class ProductReadRepository
                     ],
                 ],
             ],
+            'pagination' => [
+                'pageSizeLimit' => [15, 100],
+            ]
         ]);
     }
 }
