@@ -2,6 +2,7 @@
 
 use shop\entities\Shop\Product\Product;
 use shop\helpers\PriceHelper;
+use shop\helpers\ProductHelper;
 use yii\grid\ActionColumn;
 use yii\helpers\Html;
 use yii\grid\GridView;
@@ -50,6 +51,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         'value' => function (Product $model) {
                             return PriceHelper::format($model->price_new);
                         },
+                    ],
+                    [
+                        'attribute' => 'status',
+                        'filter' => $searchModel->statusList(),
+                        'value' => function (Product $model) {
+                            return ProductHelper::statusLabel($model->status);
+                        },
+                        'format' => 'raw',
                     ],
                 ],
             ]); ?>
