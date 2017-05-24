@@ -6,6 +6,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\widgets\LinkPager;
 
 $this->title = 'Catalog';
 $this->params['breadcrumbs'][] = $this->title;
@@ -70,7 +71,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php endforeach; ?>
 </div>
 <div class="row">
-    <div class="col-sm-6 text-left"></div>
-    <div class="col-sm-6 text-right">Showing 1 to 12 of 12 (1 Pages)</div>
+    <div class="col-sm-6 text-left">
+        <?= LinkPager::widget([
+                'pagination' => $dataProvider->getPagination(),
+        ]) ?>
+    </div>
+    <div class="col-sm-6 text-right">Showing <?= $dataProvider->getCount() ?> of <?= $dataProvider->getTotalCount() ?></div>
 </div>
 
