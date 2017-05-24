@@ -52,27 +52,15 @@ MagnificPopupAsset::register($this);
             </div>
             <div class="tab-pane" id="tab-specification">
                 <table class="table table-bordered">
-                    <thead>
-                    <tr>
-                        <td colspan="2"><strong>Memory</strong></td>
-                    </tr>
-                    </thead>
                     <tbody>
-                    <tr>
-                        <td>test 1</td>
-                        <td>16GB</td>
-                    </tr>
-                    </tbody>
-                    <thead>
-                    <tr>
-                        <td colspan="2"><strong>Processor</strong></td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>No. of Cores</td>
-                        <td>4</td>
-                    </tr>
+                    <?php foreach ($product->values as $value): ?>
+                        <?php if (!empty($value->value)): ?>
+                            <tr>
+                                <th><?= Html::encode($value->characteristic->name) ?></th>
+                                <td><?= Html::encode($value->value) ?></td>
+                            </tr>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
