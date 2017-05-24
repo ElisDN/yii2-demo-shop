@@ -4,11 +4,17 @@
 /* @var $product shop\entities\Shop\Product\Product */
 
 use frontend\assets\MagnificPopupAsset;
+use shop\helpers\PriceHelper;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
-$this->title = 'HP LP3065';
+$this->title = $product->name;
+
+$this->registerMetaTag(['name' =>'description', 'content' => $product->meta->description]);
+$this->registerMetaTag(['name' =>'keywords', 'content' => $product->meta->keywords]);
+
 $this->params['breadcrumbs'][] = ['label' => 'Catalog', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = $product->name;
 
 MagnificPopupAsset::register($this);
 ?>
@@ -39,7 +45,7 @@ MagnificPopupAsset::register($this);
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" id="tab-description"><p>
-                    Stop your co-workers in their tracks with the stunning new 30-inch diagonal HP LP3065 Flat Panel Monitor. This flagship monitor features best-in-class performance and presentation features on a huge wide-aspect screen while letting you work as comfortably as possible - you might even forget you&#39;re at the office</p>
+                    <?= Yii::$app->formatter->asNtext($product->description) ?>
             </div>
             <div class="tab-pane" id="tab-specification">
                 <table class="table table-bordered">
@@ -113,25 +119,27 @@ MagnificPopupAsset::register($this);
             <button type="button" data-toggle="tooltip" class="btn btn-default" title="Add to Wish List" onclick="wishlist.add('47');"><i class="fa fa-heart"></i></button>
             <button type="button" data-toggle="tooltip" class="btn btn-default" title="Compare this Product" onclick="compare.add('47');"><i class="fa fa-exchange"></i></button>
         </p>
-        <h1>HP LP3065</h1>
+        <h1><?= Html::encode($product->name) ?></h1>
         <ul class="list-unstyled">
-            <li>Brand: <a href="/index.php?route=product/manufacturer/info&amp;manufacturer_id=7">Hewlett-Packard</a></li>
-            <li>Product Code: Product 21</li>
-            <li>Reward Points: 300</li>
-            <li>Availability: In Stock</li>
+            <li>Brand: <a href="<?= Html::encode(Url::to(['brand', 'id' => $product->brand->id])) ?>"><?= Html::encode($product->brand->name) ?></a></li>
+            <li>
+                Tags:
+                <?php foreach ($product->tags as $tag): ?>
+                    <a href="<?= Html::encode(Url::to(['tag', 'id' => $tag->id])) ?>"><?= Html::encode($tag->name) ?></a>
+                <?php endforeach; ?>
+            </li>
+            <li>Product Code: <?= Html::encode($product->code) ?></li>
         </ul>
         <ul class="list-unstyled">
             <li>
-                <h2>$122.00</h2>
+                <h2><?= PriceHelper::format($product->price_new) ?></h2>
             </li>
-            <li>Ex Tax: $100.00</li>
-            <li>Price in reward points: 400</li>
         </ul>
         <div id="product">
             <hr>
             <h3>Available Options</h3>
             <div class="form-group required">
-                <label class="control-label" for="input-option226">Select</label>
+                <label class="control-label" for="input-option226">Modifications</label>
                 <select name="option[226]" id="input-option226" class="form-control">
                     <option value=""> --- Please Select --- </option>
                     <option value="15">Red</option>
