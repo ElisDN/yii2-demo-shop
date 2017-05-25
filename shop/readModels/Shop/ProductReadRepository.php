@@ -45,6 +45,11 @@ class ProductReadRepository
         return $this->getProvider($query);
     }
 
+    public function getFeatured($limit): array
+    {
+        return Product::find()->with('mainPhoto')->orderBy(['id' => SORT_DESC])->limit($limit)->all();
+    }
+
     public function find($id): ?Product
     {
         return Product::find()->active()->andWhere(['id' => $id])->one();
