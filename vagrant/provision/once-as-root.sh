@@ -29,12 +29,24 @@ echo "Done!"
 info "Add PHp 7.1 repository"
 add-apt-repository ppa:ondrej/php -y
 
+info "Add Oracle JDK repository"
+add-apt-repository ppa:webupd8team/java -y
+
+info "Add ElasticSearch sources"
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-5.x.list
+
 info "Update OS software"
 apt-get update
 apt-get upgrade -y
 
 info "Install additional software"
 apt-get install -y php7.1-curl php7.1-cli php7.1-intl php7.1-mysqlnd php7.1-gd php7.1-fpm php7.1-mbstring php7.1-xml unzip nginx mysql-server-5.7
+
+info "Install Oracle JDK and ElasticSearch"
+apt-get install -y oracle-java8-installer elasticsearch
+sed -i 's/-Xms2g/-Xms256m/' /etc/elasticsearch/jvm.options
+sed -i 's/-Xmx2g/-Xmx256m/' /etc/elasticsearch/jvm.options
 
 info "Configure MySQL"
 sed -i "s/.*bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf
