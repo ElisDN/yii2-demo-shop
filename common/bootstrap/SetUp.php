@@ -46,7 +46,7 @@ class SetUp implements BootstrapInterface
         $container->setSingleton(Cart::class, function () {
             return new Cart(
                 new SessionStorage('cart', new Session()),
-                new SimpleCost()
+                new DynamicCost(new SimpleCost())
             );
         });
     }
