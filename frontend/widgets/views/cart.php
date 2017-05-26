@@ -5,7 +5,6 @@
 use shop\helpers\PriceHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
-
 ?>
 
 <div id="cart" class="btn-group btn-block">
@@ -20,7 +19,6 @@ use yii\helpers\Url;
                 <?php
                 $product = $item->getProduct();
                 $modification = $item->getModification();
-                $cost = $cart->getCost();
                 $url = Url::to(['/shop/catalog/product', 'id' => $product->id]);
                 ?>
                 <tr>
@@ -46,8 +44,8 @@ use yii\helpers\Url;
         </li>
         <li>
             <div>
+                <?php $cost = $cart->getCost(); ?>
                 <table class="table table-bordered">
-
                     <tr>
                         <td class="text-right"><strong>Sub-Total:</strong></td>
                         <td class="text-right"><?= PriceHelper::format($cost->getOrigin()) ?></td>
