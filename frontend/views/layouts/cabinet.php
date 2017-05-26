@@ -18,7 +18,7 @@ use yii\helpers\Url;
             <a href="<?= Html::encode(Url::to(['/auth/auth/login'])) ?>" class="list-group-item">Login</a>
             <a href="<?= Html::encode(Url::to(['/auth/signup/request'])) ?>" class="list-group-item">Signup</a>
             <a href="<?= Html::encode(Url::to(['/auth/reset/request'])) ?>" class="list-group-item">Forgotten Password</a>
-            <a href="/account/account" class="list-group-item">My Account</a>
+            <a href="<?= Html::encode(Url::to(['/cabinet/default/index'])) ?>" class="list-group-item">My Account</a>
             <a href="/account/wishlist" class="list-group-item">Wish List</a>
             <a href="/account/order" class="list-group-item">Order History</a>
             <a href="/account/newsletter" class="list-group-item">Newsletter</a>
