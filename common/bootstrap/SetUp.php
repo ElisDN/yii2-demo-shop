@@ -4,6 +4,9 @@ namespace common\bootstrap;
 
 use Elasticsearch\Client;
 use Elasticsearch\ClientBuilder;
+use shop\cart\Cart;
+use shop\cart\cost\calculator\SimpleCost;
+use shop\cart\storage\SessionStorage;
 use shop\services\ContactService;
 use yii\base\BootstrapInterface;
 use yii\caching\Cache;
@@ -30,5 +33,12 @@ class SetUp implements BootstrapInterface
         $container->setSingleton(ContactService::class, [], [
             $app->params['adminEmail']
         ]);
+
+        $container->setSingleton(Cart::class, function () {
+            return new Cart(
+                new SessionStorage('cart'),
+                new SimpleCost()
+            );
+        });
     }
 }
