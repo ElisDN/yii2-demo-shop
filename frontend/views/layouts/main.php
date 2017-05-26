@@ -81,8 +81,8 @@ AppAsset::register($this);
                         <?php endif; ?>
                     </ul>
                 </li>
-                <li><a href="/index.php?route=account/wishlist" id="wishlist-total"
-                       title="Wish List (0)"><i class="fa fa-heart"></i> <span class="hidden-xs hidden-sm hidden-md">Wish List (0)</span></a>
+                <li><a href="<?= Url::to(['/cabinet/wishlist/index']) ?>" id="wishlist-total"
+                       title="Wish List"><i class="fa fa-heart"></i> <span class="hidden-xs hidden-sm hidden-md">Wish List</span></a>
                 </li>
                 <li><a href="/index.php?route=checkout/cart" title="Shopping Cart"><i
                                 class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md">Shopping Cart</span></a>
