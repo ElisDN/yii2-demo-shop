@@ -153,6 +153,16 @@ class Product extends ActiveRecord
         throw new \DomainException('Modification is not found.');
     }
 
+    public function getModificationPrice($id): int
+    {
+        foreach ($this->modifications as $modification) {
+            if ($modification->isIdEqualTo($id)) {
+                return $modification->price ?: $this->price_new;
+            }
+        }
+        throw new \DomainException('Modification is not found.');
+    }
+
     public function addModification($code, $name, $price): void
     {
         $modifications = $this->modifications;

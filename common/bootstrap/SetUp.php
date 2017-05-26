@@ -5,6 +5,9 @@ namespace common\bootstrap;
 use Elasticsearch\Client;
 use Elasticsearch\ClientBuilder;
 use frontend\urls\CategoryUrlRule;
+use shop\cart\Cart;
+use shop\cart\cost\calculator\SimpleCost;
+use shop\cart\storage\SessionStorage;
 use shop\readModels\Shop\CategoryReadRepository;
 use shop\services\ContactService;
 use yii\base\BootstrapInterface;
@@ -37,5 +40,12 @@ class SetUp implements BootstrapInterface
             Instance::of(CategoryReadRepository::class),
             Instance::of('cache'),
         ]);
+
+        $container->setSingleton(Cart::class, function () {
+            return new Cart(
+                new SessionStorage('cart'),
+                new SimpleCost()
+            );
+        });
     }
 }
