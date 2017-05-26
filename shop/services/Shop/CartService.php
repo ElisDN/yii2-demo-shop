@@ -4,7 +4,6 @@ namespace shop\services\Shop;
 
 use shop\cart\Cart;
 use shop\cart\CartItem;
-use shop\forms\Shop\AddToCartForm;
 use shop\repositories\Shop\ProductRepository;
 
 class CartService
@@ -23,11 +22,11 @@ class CartService
         return $this->cart;
     }
 
-    public function add($productId, AddToCartForm $form): void
+    public function add($productId, $modificationId, $quantity): void
     {
         $product = $this->products->get($productId);
-        $modification = $product->getModification($form->modification);
-        $this->cart->add(new CartItem($product, $modification->id, $form->quantity));
+        $modId = $modificationId ? $product->getModification($modificationId)->id : null;
+        $this->cart->add(new CartItem($product, $modId, $quantity));
     }
 
     public function set($id, $quantity): void

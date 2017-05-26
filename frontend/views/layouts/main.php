@@ -84,7 +84,7 @@ AppAsset::register($this);
                 <li><a href="<?= Url::to(['/cabinet/wishlist/index']) ?>" id="wishlist-total"
                        title="Wish List"><i class="fa fa-heart"></i> <span class="hidden-xs hidden-sm hidden-md">Wish List</span></a>
                 </li>
-                <li><a href="/index.php?route=checkout/cart" title="Shopping Cart"><i
+                <li><a href="<?= Url::to(['/shop/cart/index']) ?>" title="Shopping Cart"><i
                                 class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md">Shopping Cart</span></a>
                 </li>
                 <li><a href="/index.php?route=checkout/checkout" title="Checkout"><i
