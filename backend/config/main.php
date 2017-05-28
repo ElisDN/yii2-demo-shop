@@ -18,7 +18,11 @@ return [
         'log',
         'common\bootstrap\SetUp'
     ],
-    'modules' => [],
+    'modules' => [
+        'noty' => [
+            'class' => 'lo\modules\noty\Module',
+        ],
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
