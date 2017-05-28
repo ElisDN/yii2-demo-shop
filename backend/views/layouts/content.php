@@ -1,6 +1,6 @@
 <?php
 use yii\widgets\Breadcrumbs;
-use dmstr\widgets\Alert;
+use lo\modules\noty\Wrapper;
 
 ?>
 <div class="content-wrapper">
@@ -30,7 +30,10 @@ use dmstr\widgets\Alert;
     </section>
 
     <section class="content">
-        <?= Alert::widget() ?>
+        <?=Wrapper::widget([
+            'layerClass' => 'lo\modules\noty\layers\Growl',
+             // or 'layerClass' => 'lo\modules\noty\layers\Noty', 
+        ]);?>
         <?= $content ?>
     </section>
 </div>
