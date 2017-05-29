@@ -36,6 +36,20 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div class="box box-default">
+        <div class="box-header with-border">Warehouse</div>
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <?= $form->field($model, 'weight')->textInput(['maxlength' => true]) ?>
+                </div>
+                <div class="col-md-6">
+                    <?= $form->field($model->quantity, 'quantity')->textInput(['maxlength' => true]) ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box box-default">
         <div class="box-header with-border">Price</div>
         <div class="box-body">
             <div class="row">

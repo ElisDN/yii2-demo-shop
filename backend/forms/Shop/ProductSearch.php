@@ -16,12 +16,13 @@ class ProductSearch extends Model
     public $name;
     public $category_id;
     public $brand_id;
+    public $quantity;
     public $status;
 
     public function rules(): array
     {
         return [
-            [['id', 'category_id', 'brand_id', 'status'], 'integer'],
+            [['id', 'category_id', 'brand_id', 'status', 'quantity'], 'integer'],
             [['code', 'name'], 'safe'],
         ];
     }
@@ -53,6 +54,7 @@ class ProductSearch extends Model
             'category_id' => $this->category_id,
             'brand_id' => $this->brand_id,
             'status' => $this->status,
+            'quantity' => $this->quantity,
         ]);
 
         $query
