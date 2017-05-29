@@ -65,10 +65,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php foreach ($order->items as $item): ?>
                         <tr>
                             <td class="text-left">
+                                <?= Html::encode($item->product_code) ?><br />
                                 <?= Html::encode($item->product_name) ?>
                             </td>
                             <td class="text-left">
-                                <?= Html::encode($item->modification_code) ?>
+                                <?= Html::encode($item->modification_code) ?><br />
                                 <?= Html::encode($item->modification_name) ?>
                             </td>
                             <td class="text-left">
@@ -83,4 +84,32 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
     </div>
+
+    <div class="box">
+        <div class="box-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" style="margin-bottom: 0">
+                    <thead>
+                    <tr>
+                        <th class="text-left">Date</th>
+                        <th class="text-left">Staus</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($order->statuses as $status): ?>
+                        <tr>
+                            <td class="text-left">
+                                <?= Yii::$app->formatter->asDatetime($status->created_at) ?>
+                            </td>
+                            <td class="text-left">
+                                <?= OrderHelper::statusLabel($status->value) ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
 </div>
