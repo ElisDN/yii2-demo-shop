@@ -98,7 +98,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="buttons clearfix">
         <div class="pull-left"><a href="<?= Url::to('/shop/catalog/index') ?>" class="btn btn-default">Continue Shopping</a></div>
         <?php if ($cart->getItems()): ?>
-            <div class="pull-right"><a href="index.php?route=checkout/checkout" class="btn btn-primary">Checkout</a></div>
+            <div class="pull-right"><a href="<?= Url::to('/shop/checkout/index') ?>" class="btn btn-primary">Checkout</a></div>
         <?php endif; ?>
     </div>
 </div>
