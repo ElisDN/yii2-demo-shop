@@ -5,6 +5,7 @@ use shop\entities\Shop\Product\Modification;
 use shop\entities\Shop\Product\Value;
 use shop\helpers\PriceHelper;
 use shop\helpers\ProductHelper;
+use shop\helpers\WeightHelper;
 use yii\bootstrap\ActiveForm;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
@@ -74,7 +75,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'quantity',
                             [
                                 'attribute' => 'weight',
-                                'value' => $product->weight / 1000 . ' kg',
+                                'value' => WeightHelper::format($product->weight),
                             ],
                             [
                                 'attribute' => 'price_new',
