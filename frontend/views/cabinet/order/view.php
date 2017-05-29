@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
 
     <div class="table-responsive">
-        <table class="table table-bordered" style="margin-bottom: 0">
+        <table class="table table-bordered">
             <thead>
             <tr>
                 <th class="text-left">Product Name</th>
@@ -66,5 +66,11 @@ $this->params['breadcrumbs'][] = $this->title;
             </tbody>
         </table>
     </div>
+
+    <?php if ($order->canBePaid()): ?>
+        <p>
+            <?= Html::a('Pay via Robokassa', ['/payment/robokassa/invoice', 'id' => $order->id], ['class' => 'btn btn-success']) ?>
+        </p>
+    <?php endif; ?>
 
 </div>

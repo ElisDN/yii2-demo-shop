@@ -29,7 +29,8 @@
         "bower-asset/font-awesome": "^4.7",
         "bower-asset/owl.carousel": "^2.2",
         "bower-asset/magnific-popup": "^1.1",
-        "elasticsearch/elasticsearch": "^5.2"
+        "elasticsearch/elasticsearch": "^5.2",
+        "yii-cms/yii2-robokassa": "^1.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
