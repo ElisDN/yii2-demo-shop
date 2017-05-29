@@ -34,6 +34,13 @@ $this->params['breadcrumbs'][] = 'Update';
         </div>
     </div>
 
+    <div class="box box-default">
+        <div class="box-header with-border">Warehouse</div>
+        <div class="box-body">
+            <?= $form->field($model, 'weight')->textInput(['maxlength' => true]) ?>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-6">
             <div class="box box-default">

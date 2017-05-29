@@ -124,24 +124,36 @@ MagnificPopupAsset::register($this);
             </li>
         </ul>
         <div id="product">
-            <hr>
-            <h3>Available Options</h3>
 
-            <?php $form = ActiveForm::begin([
-                'action' => ['/shop/cart/add', 'id' => $product->id],
-            ]) ?>
+            <?php if ($product->isAvailable()): ?>
 
-            <?php if ($modifications = $cartForm->modificationsList()): ?>
-                <?= $form->field($cartForm, 'modification')->dropDownList($modifications, ['prompt' => '--- Select ---']) ?>
+                <hr>
+                <h3>Available Options</h3>
+
+                <?php $form = ActiveForm::begin([
+                    'action' => ['/shop/cart/add', 'id' => $product->id],
+                ]) ?>
+
+                <?php if ($modifications = $cartForm->modificationsList()): ?>
+                    <?= $form->field($cartForm, 'modification')->dropDownList($modifications, ['prompt' => '--- Select ---']) ?>
+                <?php endif; ?>
+
+                <?= $form->field($cartForm, 'quantity')->textInput() ?>
+
+                <div class="form-group">
+                    <?= Html::submitButton('Add to Cart', ['class' => 'btn btn-primary btn-lg btn-block']) ?>
+                </div>
+
+                <?php ActiveForm::end() ?>
+
+            <?php else: ?>
+
+                <div class="alert alert-danger">
+                    The product is not available for purchasing right now.<br />Add it to your wishlist.
+                </div>
+
             <?php endif; ?>
 
-            <?= $form->field($cartForm, 'quantity')->textInput() ?>
-
-            <div class="form-group">
-                <?= Html::submitButton('Add to Cart', ['class' => 'btn btn-primary btn-lg btn-block']) ?>
-            </div>
-
-            <?php ActiveForm::end() ?>
         </div>
         <div class="rating">
             <p>
