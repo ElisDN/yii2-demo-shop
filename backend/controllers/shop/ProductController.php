@@ -3,6 +3,7 @@
 namespace backend\controllers\shop;
 
 use shop\entities\Shop\Product\Modification;
+use shop\forms\manage\Shop\Product\QuantityForm;
 use shop\forms\manage\Shop\Product\PhotosForm;
 use shop\forms\manage\Shop\Product\PriceForm;
 use shop\forms\manage\Shop\Product\ProductCreateForm;
@@ -157,6 +158,30 @@ class ProductController extends Controller
             }
         }
         return $this->render('price', [
+            'model' => $form,
+            'product' => $product,
+        ]);
+    }
+
+    /**
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionQuantity($id)
+    {
+        $product = $this->findModel($id);
+
+        $form = new QuantityForm($product);
+        if ($form->load(Yii::$app->request->post()) && $form->validate()) {
+            try {
+                $this->service->changeQuantity($product->id, $form);
+                return $this->redirect(['view', 'id' => $product->id]);
+            } catch (\DomainException $e) {
+                Yii::$app->errorHandler->logException($e);
+                Yii::$app->session->setFlash('error', $e->getMessage());
+            }
+        }
+        return $this->render('quantity', [
             'model' => $form,
             'product' => $product,
         ]);
