@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\widgets;
+namespace frontend\widgets\Shop;
 
 use shop\entities\Shop\Category;
 use shop\readModels\Shop\CategoryReadRepository;
