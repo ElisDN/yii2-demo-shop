@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 /* @var $post shop\entities\Blog\Post\Post */
 
+use frontend\widgets\Blog\CommentsWidget;
 use yii\helpers\Html;
 
 $this->title = $post->getSeoTitle();
@@ -35,5 +36,9 @@ foreach ($post->tags as $tag) {
 </article>
 
 <p>Tags: <?= implode(', ', $tagLinks) ?></p>
+
+<?= CommentsWidget::widget([
+    'post' => $post,
+]) ?>
 
 

@@ -102,4 +102,33 @@ class PostController extends Controller
             'post' => $post,
         ]);
     }
+
+    /**
+     * @param $id
+     * @return mixed
+     * @throws NotFoundHttpException
+     */
+    public function actionComment($id)
+    {
+        if (!$post = $this->posts->find($id)) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+        $form = new CommentForm();
+
+        if ($form->load(Yii::$app->request->post()) && $form->validate()) {
+            try {
+                $comment = $this->service->create($post->id, Yii::$app->user->id, $form);
+                return $this->redirect(['post', 'id' => $post->id, '#' => 'comment_' . $comment->id]);
+            } catch (\DomainException $e) {
+                Yii::$app->errorHandler->logException($e);
+                Yii::$app->session->setFlash('error', $e->getMessage());
+            }
+        }
+
+        return $this->render('comment', [
+            'post' => $post,
+            'model' => $form,
+        ]);
+    }
 }
