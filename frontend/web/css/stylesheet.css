@@ -818,3 +818,9 @@ h2.price {
 .owl-dots .owl-dot.active span {
 	background: rgba(0, 0, 0, 0.9);
 }
+
+.blog-posts-item {
+	margin: 20px 0;
+	padding: 20px 0;
+	border-top: 1px solid #eee;
+}
