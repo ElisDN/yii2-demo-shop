@@ -134,6 +134,7 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'Catalog', 'url' => ['/shop/catalog/index']],
+            ['label' => 'Blog', 'url' => ['/blog/post/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/contact/index']],
         ],
