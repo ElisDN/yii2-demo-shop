@@ -1,5 +1,6 @@
 <?php
 
+use mihaildev\ckeditor\CKEditor;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -19,6 +20,7 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
             <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
             <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'description')->widget(CKEditor::className()) ?>
 
         </div>
     </div>

@@ -32,7 +32,13 @@ foreach ($post->tags as $tag) {
         <p><img src="<?= Html::encode($post->getThumbFileUrl('photo', 'origin')) ?>" alt="" class="img-responsive" /></p>
     <?php endif; ?>
 
-    <p><?= Yii::$app->formatter->asNtext($post->content) ?></p>
+    <?= Yii::$app->formatter->asHtml($post->content, [
+        'Attr.AllowedRel' => array('nofollow'),
+        'HTML.SafeObject' => true,
+        'Output.FlashCompat' => true,
+        'HTML.SafeIframe' => true,
+        'URI.SafeIframeRegexp'=>'%^(https?:)?//(www\.youtube(?:-nocookie)?\.com/embed/|player\.vimeo\.com/video/)%',
+    ]) ?>
 </article>
 
 <p>Tags: <?= implode(', ', $tagLinks) ?></p>
