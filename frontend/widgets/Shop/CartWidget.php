@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\widgets;
+namespace frontend\widgets\Shop;
 
 use shop\cart\Cart;
 use yii\base\Widget;
