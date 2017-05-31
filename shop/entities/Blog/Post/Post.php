@@ -270,6 +270,7 @@ class Post extends ActiveRecord
                     'admin' => ['width' => 100, 'height' => 70],
                     'thumb' => ['width' => 640, 'height' => 480],
                     'blog_list' => ['width' => 1000, 'height' => 150],
+                    'widget_list' => ['width' => 228, 'height' => 228],
                     'origin' => ['processor' => [new WaterMarker(1024, 768, '@frontend/web/image/logo.png'), 'process']],
                 ],
             ],
