@@ -10,7 +10,6 @@ return [
     'cache' => false,
     'rules' => [
         '' => 'site/index',
-        '<_a:about>' => 'site/<_a>',
         'contact' => 'contact/index',
         'signup' => 'auth/signup/request',
         'signup/<_a:[\w-]+>' => 'auth/signup/<_a>',
