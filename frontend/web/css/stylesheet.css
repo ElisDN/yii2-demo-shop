@@ -524,6 +524,7 @@ footer h5 {
 /* product list */
 .product-thumb {
 	border: 1px solid #ddd;
+	padding-top: 20px;
 	margin-bottom: 20px;
 	overflow: auto;
 }
