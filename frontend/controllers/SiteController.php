@@ -32,12 +32,4 @@ class SiteController extends Controller
         $this->layout = 'home';
         return $this->render('index');
     }
-
-    /**
-     * @return mixed
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
-    }
 }
