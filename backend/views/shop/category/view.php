@@ -39,6 +39,19 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div class="box">
+        <div class="box-header with-border">Description</div>
+        <div class="box-body">
+            <?= Yii::$app->formatter->asHtml($category->description, [
+                'Attr.AllowedRel' => array('nofollow'),
+                'HTML.SafeObject' => true,
+                'Output.FlashCompat' => true,
+                'HTML.SafeIframe' => true,
+                'URI.SafeIframeRegexp'=>'%^(https?:)?//(www\.youtube(?:-nocookie)?\.com/embed/|player\.vimeo\.com/video/)%',
+            ]) ?>
+        </div>
+    </div>
+
+    <div class="box">
         <div class="box-header with-border">SEO</div>
         <div class="box-body">
             <?= DetailView::widget([
