@@ -824,3 +824,18 @@ h2.price {
 	padding: 20px 0;
 	border-top: 1px solid #eee;
 }
+
+#comments .comment-item .comment-reply {
+	color: #337ab7;
+	text-decoration: none;
+	border-bottom: 1px dotted #337ab7;
+	cursor: pointer;
+}
+
+#comments .margin {
+	margin-left: 40px;
+}
+
+#comments .comment-item .comment-item .comment-item .comment-item .comment-item .margin {
+	margin-left: 0;
+}
