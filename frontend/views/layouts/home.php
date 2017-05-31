@@ -1,9 +1,10 @@
 <?php
 
 /* @var $this \yii\web\View */
-use frontend\widgets\Shop\FeaturedProductsWidget;
-
 /* @var $content string */
+
+use frontend\widgets\Blog\LastPostsWidget;
+use frontend\widgets\Shop\FeaturedProductsWidget;
 
 \frontend\assets\OwlCarouselAsset::register($this);
 
@@ -26,6 +27,12 @@ use frontend\widgets\Shop\FeaturedProductsWidget;
         <h3>Featured</h3>
 
         <?= FeaturedProductsWidget::widget([
+            'limit' => 4,
+        ]) ?>
+
+        <h3>Last Posts</h3>
+
+        <?= LastPostsWidget::widget([
             'limit' => 4,
         ]) ?>
 
