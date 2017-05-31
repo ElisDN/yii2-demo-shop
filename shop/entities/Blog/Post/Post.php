@@ -2,9 +2,10 @@
 
 namespace shop\entities\Blog\Post;
 
-use blog\entities\Blog\Post\Comment;
+use shop\entities\Blog\Post\Comment;
 use lhs\Yii2SaveRelationsBehavior\SaveRelationsBehavior;
 use shop\entities\behaviors\MetaBehavior;
+use shop\entities\Blog\Post\queries\CommentQuery;
 use shop\entities\Blog\Post\queries\PostQuery;
 use shop\entities\Meta;
 use shop\entities\Blog\Category;
@@ -24,11 +25,13 @@ use yiidreamteam\upload\ImageUploadBehavior;
  * @property string $content
  * @property string $photo
  * @property integer $status
+ * @property integer $comments_count
  *
  * @property Meta $meta
  * @property Category $category
  * @property TagAssignment[] $tagAssignments
  * @property Tag[] $tags
+ * @property Comment[] $comments
  *
  * @mixin ImageUploadBehavior
  */
@@ -49,6 +52,7 @@ class Post extends ActiveRecord
         $post->meta = $meta;
         $post->status = self::STATUS_DRAFT;
         $post->created_at = time();
+        $post->comments_count = 0;
         return $post;
     }
 
@@ -131,6 +135,92 @@ class Post extends ActiveRecord
         $this->tagAssignments = [];
     }
 
+    // Comments
+
+    public function addComment($userId, $parentId, $text): Comment
+    {
+        $parent = $parentId ? $this->getComment($parentId) : null;
+        if ($parent && !$parent->isActive()) {
+            throw new \DomainException('Cannot add comment to inactive parent.');
+        }
+        $comments = $this->comments;
+        $comments[] = $comment = Comment::create($userId, $parent ? $parent->id : null, $text);
+        $this->updateComments($comments);
+        return $comment;
+    }
+
+    public function editComment($id, $parentId, $text): void
+    {
+        $parent = $parentId ? $this->getComment($parentId) : null;
+        $comments = $this->comments;
+        foreach ($comments as $comment) {
+            if ($comment->isIdEqualTo($id)) {
+                $comment->edit($parent ? $parent->id : null, $text);
+                $this->updateComments($comments);
+                return;
+            }
+        }
+        throw new \DomainException('Comment is not found.');
+    }
+
+    public function activateComment($id): void
+    {
+        $comments = $this->comments;
+        foreach ($comments as $comment) {
+            if ($comment->isIdEqualTo($id)) {
+                $comment->activate();
+                $this->updateComments($comments);
+                return;
+            }
+        }
+        throw new \DomainException('Comment is not found.');
+    }
+
+    public function removeComment($id): void
+    {
+        $comments = $this->comments;
+        foreach ($comments as $i => $comment) {
+            if ($comment->isIdEqualTo($id)) {
+                if ($this->hasChildren($comment->id)) {
+                    $comment->draft();
+                } else {
+                    unset($comments[$i]);
+                }
+                $this->updateComments($comments);
+                return;
+            }
+        }
+        throw new \DomainException('Comment is not found.');
+    }
+
+    public function getComment($id): Comment
+    {
+        foreach ($this->comments as $comment) {
+            if ($comment->isIdEqualTo($id)) {
+                return $comment;
+            }
+        }
+        throw new \DomainException('Comment is not found.');
+    }
+
+    private function hasChildren($id): bool
+    {
+        foreach ($this->comments as $comment) {
+            if ($comment->isChildOf($id)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private function updateComments(array $comments): void
+    {
+        $this->comments = $comments;
+        $this->comments_count = count(array_filter($comments, function (Comment $comment) {
+            return $comment->isActive();
+        }));
+    }
+
     ##########################
 
     public function getCategory(): ActiveQuery
@@ -148,6 +238,11 @@ class Post extends ActiveRecord
         return $this->hasMany(Tag::class, ['id' => 'tag_id'])->via('tagAssignments');
     }
 
+    public function getComments(): ActiveQuery
+    {
+        return $this->hasMany(Comment::class, ['post_id' => 'id']);
+    }
+
     ##########################
 
     public static function tableName(): string
@@ -161,7 +256,7 @@ class Post extends ActiveRecord
             MetaBehavior::className(),
             [
                 'class' => SaveRelationsBehavior::className(),
-                'relations' => ['tagAssignments'],
+                'relations' => ['tagAssignments', 'comments'],
             ],
             [
                 'class' => ImageUploadBehavior::className(),
