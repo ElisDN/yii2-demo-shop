@@ -1,7 +1,7 @@
 <?php
 
 /* @var $this \yii\web\View */
-use frontend\widgets\FeaturedProductsWidget;
+use frontend\widgets\Shop\FeaturedProductsWidget;
 
 /* @var $content string */
 
