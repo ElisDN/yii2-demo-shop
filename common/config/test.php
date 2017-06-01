@@ -7,7 +7,7 @@ return [
     'components' => [
         'user' => [
             'class' => 'yii\web\User',
-            'identityClass' => 'shop\entities\User\User',
+            'identityClass' => 'common\auth\Identity',
             'identityCookie' => new ReplaceArrayValue(['name' => '_identity', 'httpOnly' => true]),
         ],
     ],
