@@ -2,6 +2,7 @@
 
 namespace frontend\controllers\auth;
 
+use common\auth\Identity;
 use shop\services\auth\NetworkService;
 use Yii;
 use yii\authclient\ClientInterface;
@@ -37,7 +38,7 @@ class NetworkController extends Controller
 
         try {
             $user = $this->service->auth($network, $identity);
-            Yii::$app->user->login($user, Yii::$app->params['user.rememberMeDuration']);
+            Yii::$app->user->login(new Identity($user), Yii::$app->params['user.rememberMeDuration']);
         } catch (\DomainException $e) {
             Yii::$app->errorHandler->logException($e);
             Yii::$app->session->setFlash('error', $e->getMessage());
