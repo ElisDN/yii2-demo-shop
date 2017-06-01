@@ -1,6 +1,7 @@
 <?php
 namespace backend\controllers;
 
+use common\auth\Identity;
 use shop\services\auth\AuthService;
 use Yii;
 use yii\web\Controller;
@@ -47,7 +48,7 @@ class AuthController extends Controller
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {
             try {
                 $user = $this->authService->auth($form);
-                Yii::$app->user->login($user, $form->rememberMe ? 3600 * 24 * 30 : 0);
+                Yii::$app->user->login(new Identity($user), $form->rememberMe ? 3600 * 24 * 30 : 0);
                 return $this->goBack();
             } catch (\DomainException $e) {
                 Yii::$app->errorHandler->logException($e);
