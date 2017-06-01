@@ -34,7 +34,8 @@
         "phpoffice/phpexcel": "^1.8",
         "mihaildev/yii2-ckeditor": "^1.0",
         "mihaildev/yii2-elfinder": "^1.2",
-        "fishvision/yii2-migrate": "^1.0"
+        "fishvision/yii2-migrate": "^1.0",
+        "guzzlehttp/guzzle": "^6.2"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
