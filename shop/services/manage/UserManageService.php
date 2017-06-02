@@ -49,6 +49,12 @@ class UserManageService
         });
     }
 
+    public function assignRole($id, $role): void
+    {
+        $user = $this->repository->get($id);
+        $this->roles->assign($user->id, $role);
+    }
+
     public function remove($id): void
     {
         $user = $this->repository->get($id);
