@@ -36,6 +36,18 @@ class CartController extends Controller
         ];
     }
 
+    /**
+     * @SWG\Get(
+     *     path="/shop/cart",
+     *     tags={"Cart"},
+     *     @SWG\Response(
+     *         response=200,
+     *         description="Success response",
+     *         @SWG\Schema(ref="#/definitions/Cart"),
+     *     ),
+     *     security={{"Bearer": {}, "OAuth2": {}}}
+     * )
+     */
     public function actionIndex(): array
     {
         $cart = $this->service->getCart();
@@ -68,7 +80,6 @@ class CartController extends Controller
                     ] : [],
                     '_links' => [
                         'quantity' => ['href' => Url::to(['quantity', 'id' => $item->getId()], true)],
-                        'remove' => ['href' => Url::to(['delete', 'id' => $item->getId()], true)],
                     ],
                 ];
             }, $cart->getItems()),
@@ -88,6 +99,24 @@ class CartController extends Controller
         ];
     }
 
+    /**
+     * @SWG\Post(
+     *     path="/shop/products/{productId}/cart",
+     *     tags={"Cart"},
+     *     @SWG\Parameter(name="productId", in="path", required=true, type="integer"),
+     *     @SWG\Parameter(name="modification", in="formData", required=false, type="integer"),
+     *     @SWG\Parameter(name="quantity", in="formData", required=true, type="integer"),
+     *     @SWG\Response(
+     *         response=201,
+     *         description="Success response",
+     *     ),
+     *     security={{"Bearer": {}, "OAuth2": {}}}
+     * )
+     * @param $id
+     * @return array|AddToCartForm
+     * @throws BadRequestHttpException
+     * @throws NotFoundHttpException
+     */
     public function actionAdd($id)
     {
         if (!$product = $this->products->find($id)) {
@@ -110,6 +139,22 @@ class CartController extends Controller
         return $form;
     }
 
+    /**
+     * @SWG\Put(
+     *     path="/shop/cart/{id}/quantity",
+     *     tags={"Cart"},
+     *     @SWG\Parameter(name="id", in="path", required=true, type="integer"),
+     *     @SWG\Parameter(name="quantity", in="formData", required=true, type="integer"),
+     *     @SWG\Response(
+     *         response=201,
+     *         description="Success response",
+     *     ),
+     *     security={{"Bearer": {}, "OAuth2": {}}}
+     * )
+     * @param $id
+     * @throws BadRequestHttpException
+     * @throws NotFoundHttpException
+     */
     public function actionQuantity($id): void
     {
         try {
@@ -119,6 +164,21 @@ class CartController extends Controller
         }
     }
 
+    /**
+     * @SWG\Delete(
+     *     path="/shop/cart/{id}",
+     *     tags={"Cart"},
+     *     @SWG\Parameter(name="id", in="path", required=true, type="integer"),
+     *     @SWG\Response(
+     *         response=204,
+     *         description="Success response",
+     *     ),
+     *     security={{"Bearer": {}, "OAuth2": {}}}
+     * )
+     * @param $id
+     * @throws BadRequestHttpException
+     * @throws NotFoundHttpException
+     */
     public function actionDelete($id): void
     {
         try {
@@ -129,6 +189,18 @@ class CartController extends Controller
         }
     }
 
+    /**
+     * @SWG\Delete(
+     *     path="/shop/cart",
+     *     tags={"Cart"},
+     *     @SWG\Response(
+     *         response=204,
+     *         description="Success response",
+     *     ),
+     *     security={{"Bearer": {}, "OAuth2": {}}}
+     * )
+     * @throws BadRequestHttpException
+     */
     public function actionClear(): void
     {
         try {
@@ -139,3 +211,48 @@ class CartController extends Controller
         }
     }
 }
+
+/**
+ * @SWG\Definition(
+ *     definition="Cart",
+ *     type="object",
+ *     @SWG\Property(property="weight", type="integer"),
+ *     @SWG\Property(property="amount", type="integer"),
+ *     @SWG\Property(property="items", type="array", @SWG\Items(
+ *         type="object",
+ *         @SWG\Property(property="id", type="string"),
+ *         @SWG\Property(property="quantity", type="integer"),
+ *         @SWG\Property(property="price", type="integer"),
+ *         @SWG\Property(property="cost", type="integer"),
+ *         @SWG\Property(property="product", type="object",
+ *             @SWG\Property(property="id", type="integer"),
+ *             @SWG\Property(property="code", type="string"),
+ *             @SWG\Property(property="name", type="string"),
+ *             @SWG\Property(property="thumbnail", type="string"),
+ *             @SWG\Property(property="_links", type="object",
+ *                 @SWG\Property(property="self", type="object", @SWG\Property(property="href", type="string")),
+ *             )
+ *         ),
+ *         @SWG\Property(property="modification", type="object",
+ *             @SWG\Property(property="id", type="integer"),
+ *             @SWG\Property(property="code", type="string"),
+ *             @SWG\Property(property="name", type="string"),
+ *             @SWG\Property(property="_links", type="object",
+ *                 @SWG\Property(property="quantity", type="object", @SWG\Property(property="href", type="string")),
+ *             )
+ *         )
+ *     )),
+ *     @SWG\Property(property="cost", type="object",
+ *         @SWG\Property(property="origin", type="integer"),
+ *         @SWG\Property(property="discounts", type="array", @SWG\Items(
+ *             type="object",
+ *             @SWG\Property(property="name", type="string"),
+ *             @SWG\Property(property="value", type="integer")
+ *         )),
+ *         @SWG\Property(property="total", type="integer"),
+ *     ),
+ *     @SWG\Property(property="_links", type="object",
+ *         @SWG\Property(property="self", type="object", @SWG\Property(property="href", type="string")),
+ *     )
+ * )
+ */
