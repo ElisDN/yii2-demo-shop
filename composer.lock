@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "99afa21c8b212a5309cc872675e2b7a4",
+    "content-hash": "6aa813b4342c70e2d58a73bc7e5be11b",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -472,6 +472,46 @@
                 "html"
             ],
             "time": "2017-03-13T06:30:53+00:00"
+        },
+        {
+            "name": "fishvision/yii2-migrate",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fishvision/yii2-migrate.git",
+                "reference": "7ccde6c2dede7e9cfccd8de3cfe35f01096ac3bb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fishvision/yii2-migrate/zipball/7ccde6c2dede7e9cfccd8de3cfe35f01096ac3bb",
+                "reference": "7ccde6c2dede7e9cfccd8de3cfe35f01096ac3bb",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "fishvision\\migrate\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Berriman",
+                    "email": "alexb@fishvision.com"
+                }
+            ],
+            "description": "Extended migration support",
+            "keywords": [
+                "extension",
+                "yii2"
+            ],
+            "time": "2016-04-03T22:08:44+00:00"
         },
         {
             "name": "fortawesome/font-awesome",
