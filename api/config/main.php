@@ -87,6 +87,10 @@ return [
                 'GET shop/products/brand/<id:\d+>' => 'shop/product/brand',
                 'GET shop/products/tag/<id:\d+>' => 'shop/product/tag',
                 'GET shop/products' => 'shop/product/index',
+                'shop/products/<id:\d+>/wish' => 'shop/wishlist/add',
+
+                'GET shop/wishlist' => 'shop/wishlist/index',
+                'DELETE shop/wishlist/<id:\d+>' => 'shop/wishlist/delete',
             ],
         ],
     ],
