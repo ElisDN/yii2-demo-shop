@@ -33,12 +33,41 @@ class WishlistController extends Controller
         ];
     }
 
+    /**
+     * @SWG\Get(
+     *     path="/shop/wishlist",
+     *     tags={"WishList"},
+     *     @SWG\Response(
+     *         response=200,
+     *         description="Success response",
+     *         @SWG\Schema(
+     *             type="array",
+     *             @SWG\Items(ref="#/definitions/WishlistItem")
+     *         ),
+     *     ),
+     *     security={{"Bearer": {}, "OAuth2": {}}}
+     * )
+     */
     public function actionIndex(): DataProviderInterface
     {
         $dataProvider = $this->products->getWishList(\Yii::$app->user->id);
         return new MapDataProvider($dataProvider, [$this, 'serializeListItem']);
     }
 
+    /**
+     * @SWG\Post(
+     *     path="/shop/products/{productId}/wish",
+     *     tags={"WishList"},
+     *     @SWG\Parameter(name="productId", in="path", required=true, type="integer"),
+     *     @SWG\Response(
+     *         response=201,
+     *         description="Success response",
+     *     ),
+     *     security={{"Bearer": {}, "OAuth2": {}}}
+     * )
+     * @param $id
+     * @throws BadRequestHttpException
+     */
     public function actionAdd($id): void
     {
         try {
@@ -49,6 +78,20 @@ class WishlistController extends Controller
         }
     }
 
+    /**
+     * @SWG\Delete(
+     *     path="/shop/wishlist/{id}",
+     *     tags={"WishList"},
+     *     @SWG\Parameter(name="id", in="path", required=true, type="integer"),
+     *     @SWG\Response(
+     *         response=204,
+     *         description="Success response",
+     *     ),
+     *     security={{"Bearer": {}, "OAuth2": {}}}
+     * )
+     * @param $id
+     * @throws BadRequestHttpException
+     */
     public function actionDelete($id): void
     {
         try {
@@ -77,3 +120,22 @@ class WishlistController extends Controller
         ];
     }
 }
+
+/**
+ * @SWG\Definition(
+ *     definition="WishlistItem",
+ *     type="object",
+ *     @SWG\Property(property="id", type="integer"),
+ *     @SWG\Property(property="code", type="string"),
+ *     @SWG\Property(property="name", type="string"),
+ *     @SWG\Property(property="price", type="object",
+ *         @SWG\Property(property="new", type="integer"),
+ *         @SWG\Property(property="old", type="integer"),
+ *     ),
+ *     @SWG\Property(property="thumbnail", type="string"),
+ *     @SWG\Property(property="_links", type="object",
+ *         @SWG\Property(property="self", type="object", @SWG\Property(property="href", type="string")),
+ *         @SWG\Property(property="cart", type="object", @SWG\Property(property="href", type="string")),
+ *     ),
+ * )
+ */
