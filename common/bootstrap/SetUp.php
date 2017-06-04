@@ -8,6 +8,8 @@ use shop\cart\Cart;
 use shop\cart\cost\calculator\DynamicCost;
 use shop\cart\cost\calculator\SimpleCost;
 use shop\cart\storage\HybridStorage;
+use shop\services\yandex\ShopInfo;
+use shop\services\yandex\YandexMarket;
 use shop\services\ContactService;
 use yii\base\BootstrapInterface;
 use yii\caching\Cache;
@@ -46,5 +48,9 @@ class SetUp implements BootstrapInterface
                 new DynamicCost(new SimpleCost())
             );
         });
+
+        $container->setSingleton(YandexMarket::class, [], [
+            new ShopInfo($app->name, $app->name, $app->params['frontendHostInfo']),
+        ]);
     }
 }
