@@ -5,7 +5,7 @@ namespace frontend\controllers\payment;
 use robokassa\Merchant;
 use shop\entities\Shop\Order\Order;
 use shop\readModels\Shop\OrderReadRepository;
-use shop\services\Shop\OrderService;
+use shop\useCases\Shop\OrderService;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
