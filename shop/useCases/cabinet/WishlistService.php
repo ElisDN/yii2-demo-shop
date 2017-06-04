@@ -1,6 +1,6 @@
 <?php
 
-namespace shop\services\cabinet;
+namespace shop\useCases\cabinet;
 
 use shop\repositories\Shop\ProductRepository;
 use shop\repositories\UserRepository;

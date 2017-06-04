@@ -3,7 +3,7 @@
 namespace frontend\controllers\auth;
 
 use common\auth\Identity;
-use shop\services\auth\NetworkService;
+use shop\useCases\auth\NetworkService;
 use Yii;
 use yii\authclient\ClientInterface;
 use yii\helpers\ArrayHelper;

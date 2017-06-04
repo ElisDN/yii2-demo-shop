@@ -1,10 +1,10 @@
 <?php
 
-namespace shop\services\manage\Blog;
+namespace shop\useCases\manage\Shop;
 
-use shop\entities\Blog\Tag;
-use shop\forms\manage\Blog\TagForm;
-use shop\repositories\Blog\TagRepository;
+use shop\entities\Shop\Tag;
+use shop\forms\manage\Shop\TagForm;
+use shop\repositories\Shop\TagRepository;
 
 class TagManageService
 {
