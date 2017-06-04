@@ -6,7 +6,7 @@ use shop\forms\Blog\CommentForm;
 use shop\readModels\Blog\CategoryReadRepository;
 use shop\readModels\Blog\PostReadRepository;
 use shop\readModels\Blog\TagReadRepository;
-use shop\services\Blog\CommentService;
+use shop\useCases\Blog\CommentService;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

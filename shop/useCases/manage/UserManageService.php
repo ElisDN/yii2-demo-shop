@@ -1,6 +1,6 @@
 <?php
 
-namespace shop\services\manage;
+namespace shop\useCases\manage;
 
 use shop\entities\User\User;
 use shop\forms\manage\User\UserCreateForm;

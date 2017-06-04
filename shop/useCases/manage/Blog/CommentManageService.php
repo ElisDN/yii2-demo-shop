@@ -1,6 +1,6 @@
 <?php
 
-namespace shop\services\manage\Blog;
+namespace shop\useCases\manage\Blog;
 
 use shop\forms\manage\Blog\Post\CommentEditForm;
 use shop\repositories\Blog\PostRepository;

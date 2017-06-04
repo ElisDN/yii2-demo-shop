@@ -6,7 +6,7 @@ use shop\cart\CartItem;
 use shop\cart\cost\Discount;
 use shop\forms\Shop\AddToCartForm;
 use shop\readModels\Shop\ProductReadRepository;
-use shop\services\Shop\CartService;
+use shop\useCases\Shop\CartService;
 use Yii;
 use yii\helpers\Url;
 use yii\rest\Controller;

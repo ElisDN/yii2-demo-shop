@@ -8,7 +8,7 @@ use shop\forms\manage\Shop\Product\PhotosForm;
 use shop\forms\manage\Shop\Product\PriceForm;
 use shop\forms\manage\Shop\Product\ProductCreateForm;
 use shop\forms\manage\Shop\Product\ProductEditForm;
-use shop\services\manage\Shop\ProductManageService;
+use shop\useCases\manage\Shop\ProductManageService;
 use Yii;
 use shop\entities\Shop\Product\Product;
 use backend\forms\Shop\ProductSearch;

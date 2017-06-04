@@ -1,6 +1,6 @@
 <?php
 
-namespace shop\services\Shop;
+namespace shop\useCases\Shop;
 
 use shop\cart\Cart;
 use shop\cart\CartItem;
