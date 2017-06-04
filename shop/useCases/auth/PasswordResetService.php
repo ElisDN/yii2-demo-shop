@@ -1,6 +1,6 @@
 <?php
 
-namespace shop\services\auth;
+namespace shop\useCases\auth;
 
 use shop\forms\auth\PasswordResetRequestForm;
 use shop\forms\auth\ResetPasswordForm;

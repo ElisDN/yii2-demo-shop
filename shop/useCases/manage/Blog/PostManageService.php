@@ -1,6 +1,6 @@
 <?php
 
-namespace shop\services\manage\Blog;
+namespace shop\useCases\manage\Blog;
 
 use shop\entities\Meta;
 use shop\entities\Blog\Post\Post;
