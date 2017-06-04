@@ -2,7 +2,7 @@
 namespace backend\controllers;
 
 use common\auth\Identity;
-use shop\services\auth\AuthService;
+use shop\useCases\auth\AuthService;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;

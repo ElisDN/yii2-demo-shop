@@ -1,7 +1,7 @@
 <?php
 namespace frontend\controllers\auth;
 
-use shop\services\auth\SignupService;
+use shop\useCases\auth\SignupService;
 use Yii;
 use yii\web\Controller;
 use yii\filters\AccessControl;

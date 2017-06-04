@@ -1,6 +1,6 @@
 <?php
 
-namespace shop\services\Blog;
+namespace shop\useCases\Blog;
 
 use shop\entities\Blog\Post\Comment;
 use shop\forms\Blog\CommentForm;
