@@ -11,6 +11,16 @@ use yii\db\ActiveQuery;
 
 class PostReadRepository
 {
+    public function count(): int
+    {
+        return Post::find()->active()->count();
+    }
+
+    public function getAllByRange($offset, $limit): array
+    {
+        return Post::find()->active()->orderBy(['id' => SORT_ASC])->limit($limit)->offset($offset)->all();
+    }
+
     public function getAll(): DataProviderInterface
     {
         $query = Post::find()->active()->with('category');
