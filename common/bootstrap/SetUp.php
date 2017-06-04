@@ -10,7 +10,7 @@ use shop\cart\cost\calculator\SimpleCost;
 use shop\cart\storage\HybridStorage;
 use shop\services\yandex\ShopInfo;
 use shop\services\yandex\YandexMarket;
-use shop\services\ContactService;
+use shop\useCases\ContactService;
 use yii\base\BootstrapInterface;
 use yii\caching\Cache;
 use yii\mail\MailerInterface;

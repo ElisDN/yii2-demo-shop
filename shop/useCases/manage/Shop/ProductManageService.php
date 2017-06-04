@@ -1,6 +1,6 @@
 <?php
 
-namespace shop\services\manage\Shop;
+namespace shop\useCases\manage\Shop;
 
 use shop\entities\Meta;
 use shop\entities\Shop\Product\Product;

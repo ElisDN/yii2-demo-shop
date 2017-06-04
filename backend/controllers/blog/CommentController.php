@@ -4,7 +4,7 @@ namespace backend\controllers\blog;
 
 use backend\forms\Blog\CommentSearch;
 use shop\forms\manage\Blog\Post\CommentEditForm;
-use shop\services\manage\Blog\CommentManageService;
+use shop\useCases\manage\Blog\CommentManageService;
 use Yii;
 use shop\entities\Blog\Post\Post;
 use yii\web\Controller;

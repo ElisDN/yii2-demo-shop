@@ -1,6 +1,6 @@
 <?php
 
-namespace shop\services\manage\Shop;
+namespace shop\useCases\manage\Shop;
 
 use shop\entities\Shop\DeliveryMethod;
 use shop\forms\manage\Shop\DeliveryMethodForm;
