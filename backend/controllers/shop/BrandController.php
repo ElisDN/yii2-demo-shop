@@ -3,7 +3,7 @@
 namespace backend\controllers\shop;
 
 use shop\forms\manage\Shop\BrandForm;
-use shop\services\manage\Shop\BrandManageService;
+use shop\useCases\manage\Shop\BrandManageService;
 use Yii;
 use shop\entities\Shop\Brand;
 use backend\forms\Shop\BrandSearch;
