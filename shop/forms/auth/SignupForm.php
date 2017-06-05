@@ -11,6 +11,7 @@ class SignupForm extends Model
 {
     public $username;
     public $email;
+    public $phone;
     public $password;
 
     /**
@@ -32,6 +33,9 @@ class SignupForm extends Model
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
+
+            ['phone', 'required'],
+            ['phone', 'integer'],
         ];
     }
 }
