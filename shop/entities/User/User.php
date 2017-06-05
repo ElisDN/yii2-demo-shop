@@ -52,6 +52,13 @@ class User extends ActiveRecord
         $this->updated_at = time();
     }
 
+    public function editProfile(string $email, string $phone): void
+    {
+        $this->email = $email;
+        $this->phone = $phone;
+        $this->updated_at = time();
+    }
+
     public static function requestSignup(string $username, string $email, string $phone, string $password): self
     {
         $user = new User();
