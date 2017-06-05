@@ -38,6 +38,7 @@ class UserManageService
         $user = User::create(
             $form->username,
             $form->email,
+            $form->phone,
             $form->password
         );
         $this->transaction->wrap(function () use ($user, $form) {
@@ -53,7 +54,8 @@ class UserManageService
         $user = $this->repository->get($id);
         $user->edit(
             $form->username,
-            $form->email
+            $form->email,
+            $form->phone
         );
         $this->transaction->wrap(function () use ($user, $form) {
             $this->repository->save($user);
