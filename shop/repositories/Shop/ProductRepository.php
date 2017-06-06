@@ -38,7 +38,7 @@ class ProductRepository
         if (!$product->save()) {
             throw new \RuntimeException('Saving error.');
         }
-        $this->dispatcher->dispatchAll($brand->releaseEvents());
+        $this->dispatcher->dispatchAll($product->releaseEvents());
     }
 
     public function remove(Product $product): void
@@ -46,6 +46,6 @@ class ProductRepository
         if (!$product->delete()) {
             throw new \RuntimeException('Removing error.');
         }
-        $this->dispatcher->dispatchAll($brand->releaseEvents());
+        $this->dispatcher->dispatchAll($product->releaseEvents());
     }
 }
