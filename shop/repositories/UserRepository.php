@@ -2,10 +2,18 @@
 
 namespace shop\repositories;
 
+use shop\dispatchers\EventDispatcher;
 use shop\entities\User\User;
 
 class UserRepository
 {
+    private $dispatcher;
+
+    public function __construct(EventDispatcher $dispatcher)
+    {
+        $this->dispatcher = $dispatcher;
+    }
+
     public function findByUsernameOrEmail($value): ?User
     {
         return User::find()->andWhere(['or', ['username' => $value], ['email' => $value]])->one();
@@ -46,6 +54,7 @@ class UserRepository
         if (!$user->save()) {
             throw new \RuntimeException('Saving error.');
         }
+        $this->dispatcher->dispatchAll($user->releaseEvents());
     }
 
     public function remove(User $user): void
@@ -53,6 +62,7 @@ class UserRepository
         if (!$user->delete()) {
             throw new \RuntimeException('Removing error.');
         }
+        $this->dispatcher->dispatchAll($user->releaseEvents());
     }
 
     private function getBy(array $condition): User
