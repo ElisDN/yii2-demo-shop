@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ff0384e6b9cde8523afa86ae34b4227",
+    "content-hash": "9f4449013583d2fafdf606d7007b5504",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -3443,6 +3443,83 @@
                 "yii2"
             ],
             "time": "2017-05-01T08:29:00+00:00"
+        },
+        {
+            "name": "zhuravljov/yii2-queue",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zhuravljov/yii2-queue.git",
+                "reference": "73f6e637e4f3491764f5959c7ff11a6af3de82b1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zhuravljov/yii2-queue/zipball/73f6e637e4f3491764f5959c7ff11a6af3de82b1",
+                "reference": "73f6e637e4f3491764f5959c7ff11a6af3de82b1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0",
+                "yiisoft/yii2": "~2.0.10"
+            },
+            "require-dev": {
+                "jeremeamia/superclosure": "*",
+                "pda/pheanstalk": "*",
+                "php-amqplib/php-amqplib": "*",
+                "phpunit/phpunit": "~4.4",
+                "symfony/process": "*",
+                "yiisoft/yii2-debug": "*",
+                "yiisoft/yii2-gii": "*",
+                "yiisoft/yii2-redis": "*"
+            },
+            "suggest": {
+                "ext-gearman": "Need for Gearman queue.",
+                "ext-pcntl": "Need for process signals.",
+                "pda/pheanstalk": "Need for Beanstalk queue.",
+                "php-amqplib/php-amqplib": "Need for AMQP queue.",
+                "yiisoft/yii2-redis": "Need for Redis queue."
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "zhuravljov\\yii\\queue\\": "src",
+                    "zhuravljov\\yii\\queue\\amqp\\": "src/drivers/amqp",
+                    "zhuravljov\\yii\\queue\\beanstalk\\": "src/drivers/beanstalk",
+                    "zhuravljov\\yii\\queue\\db\\": "src/drivers/db",
+                    "zhuravljov\\yii\\queue\\file\\": "src/drivers/file",
+                    "zhuravljov\\yii\\queue\\gearman\\": "src/drivers/gearman",
+                    "zhuravljov\\yii\\queue\\redis\\": "src/drivers/redis",
+                    "zhuravljov\\yii\\queue\\sync\\": "src/drivers/sync"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Roman Zhuravlev",
+                    "email": "zhuravljov@gmail.com"
+                }
+            ],
+            "description": "Yii2 Queue Extension which supported DB, Redis, RabbitMQ, Beanstalk and Gearman",
+            "keywords": [
+                "async",
+                "beanstalk",
+                "db",
+                "gearman",
+                "gii",
+                "queue",
+                "rabbitmq",
+                "redis",
+                "yii"
+            ],
+            "time": "2017-05-03T21:24:36+00:00"
         }
     ],
     "packages-dev": [
