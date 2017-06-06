@@ -1,10 +1,10 @@
 <?php
 
-namespace shop\useCases\auth\events;
+namespace shop\entities\User\events;
 
 use shop\entities\User\User;
 
-class UserSignUpRequested
+class UserSignUpConfirmed
 {
     public $user;
 
