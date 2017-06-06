@@ -156,7 +156,7 @@ class ProductManageService
     public function changeQuantity($id, QuantityForm $form): void
     {
         $product = $this->products->get($id);
-        $product->setQuantity($form->quantity);
+        $product->changeQuantity($form->quantity);
         $this->products->save($product);
     }
 
