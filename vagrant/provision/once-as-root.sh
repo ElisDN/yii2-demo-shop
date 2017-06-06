@@ -57,6 +57,9 @@ service elasticsearch restart
 info "Install Redis"
 apt-get install -y redis-server
 
+info "Install Supervisor"
+apt-get install -y supervisor
+
 info "Configure MySQL"
 sed -i "s/.*bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf
 mysql -uroot <<< "CREATE USER 'root'@'%' IDENTIFIED BY ''"
@@ -82,6 +85,10 @@ echo "Done!"
 info "Initailize databases for MySQL"
 mysql -uroot <<< "CREATE DATABASE shop"
 mysql -uroot <<< "CREATE DATABASE shop_test"
+echo "Done!"
+
+info "Enabling supervisor processes"
+ln -s /app/vagrant/supervisor/queue.conf /etc/supervisor/conf.d/queue.conf
 echo "Done!"
 
 info "Install composer"
