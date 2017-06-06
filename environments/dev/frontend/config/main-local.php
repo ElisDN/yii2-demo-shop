@@ -20,6 +20,9 @@ if (!YII_ENV_TEST) {
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
+        'panels' => [
+            'queue' => 'yii\queue\debug\Panel',
+        ],
     ];
 
     $config['bootstrap'][] = 'gii';
