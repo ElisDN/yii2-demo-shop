@@ -49,6 +49,19 @@ class UserRepository
         return (bool) User::findByPasswordResetToken($token);
     }
 
+    /**
+     * @param $productId
+     * @return iterable|User[]
+     */
+    public function getAllByProductInWishList($productId): iterable
+    {
+        return User::find()
+            ->alias('u')
+            ->joinWith('wishlistItems w', false, 'INNER JOIN')
+            ->andWhere(['w.product_id' => $productId])
+            ->each();
+    }
+
     public function save(User $user): void
     {
         if (!$user->save()) {
