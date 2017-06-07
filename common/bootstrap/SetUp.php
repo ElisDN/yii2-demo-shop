@@ -14,6 +14,7 @@ use shop\dispatchers\EventDispatcher;
 use shop\dispatchers\SimpleEventDispatcher;
 use shop\entities\Shop\Product\events\ProductAppearedInStock;
 use shop\jobs\AsyncEventJobHandler;
+use shop\listeners\Shop\Category\CategoryPersistenceListener;
 use shop\listeners\Shop\Product\ProductAppearedInStockListener;
 use shop\listeners\Shop\Product\ProductSearchPersistListener;
 use shop\listeners\Shop\Product\ProductSearchRemoveListener;
@@ -110,8 +111,14 @@ class SetUp implements BootstrapInterface
                 UserSignUpRequested::class => [UserSignupRequestedListener::class],
                 UserSignUpConfirmed::class => [UserSignupConfirmedListener::class],
                 ProductAppearedInStock::class => [ProductAppearedInStockListener::class],
-                EntityPersisted::class => [ProductSearchPersistListener::class],
-                EntityRemoved::class => [ProductSearchRemoveListener::class],
+                EntityPersisted::class => [
+                    ProductSearchPersistListener::class,
+                    CategoryPersistenceListener::class,
+                ],
+                EntityRemoved::class => [
+                    ProductSearchRemoveListener::class,
+                    CategoryPersistenceListener::class,
+                ],
             ]);
         });
 
