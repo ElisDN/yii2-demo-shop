@@ -15,8 +15,12 @@ use shop\dispatchers\SimpleEventDispatcher;
 use shop\entities\Shop\Product\events\ProductAppearedInStock;
 use shop\jobs\AsyncEventJobHandler;
 use shop\listeners\Shop\Product\ProductAppearedInStockListener;
+use shop\listeners\Shop\Product\ProductSearchPersistListener;
+use shop\listeners\Shop\Product\ProductSearchRemoveListener;
 use shop\listeners\User\UserSignupConfirmedListener;
 use shop\listeners\User\UserSignupRequestedListener;
+use shop\repositories\events\EntityPersisted;
+use shop\repositories\events\EntityRemoved;
 use shop\services\newsletter\MailChimp;
 use shop\services\newsletter\Newsletter;
 use shop\services\sms\LoggedSender;
@@ -106,6 +110,8 @@ class SetUp implements BootstrapInterface
                 UserSignUpRequested::class => [UserSignupRequestedListener::class],
                 UserSignUpConfirmed::class => [UserSignupConfirmedListener::class],
                 ProductAppearedInStock::class => [ProductAppearedInStockListener::class],
+                EntityPersisted::class => [ProductSearchPersistListener::class],
+                EntityRemoved::class => [ProductSearchRemoveListener::class],
             ]);
         });
 
