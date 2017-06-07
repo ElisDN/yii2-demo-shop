@@ -7,6 +7,7 @@ use shop\readModels\Shop\CategoryReadRepository;
 use yii\base\InvalidParamException;
 use yii\base\Object;
 use yii\caching\Cache;
+use yii\caching\TagDependency;
 use yii\helpers\ArrayHelper;
 use yii\web\UrlNormalizerRedirectException;
 use yii\web\UrlRuleInterface;
@@ -35,7 +36,7 @@ class CategoryUrlRule extends Object implements UrlRuleInterface
                     return ['id' => null, 'path' => null];
                 }
                 return ['id' => $category->id, 'path' => $this->getCategoryPath($category)];
-            });
+            }, null, new TagDependency(['tags' => ['categories']]));
 
             if (empty($result['id'])) {
                 return false;
@@ -63,7 +64,7 @@ class CategoryUrlRule extends Object implements UrlRuleInterface
                     return null;
                 }
                 return $this->getCategoryPath($category);
-            });
+            }, null, new TagDependency(['tags' => ['categories']]));
 
             if (!$url) {
                 throw new InvalidParamException('Undefined id.');
