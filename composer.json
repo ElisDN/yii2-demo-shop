@@ -40,7 +40,8 @@
         "flow/jsonpath": "^0.3.4",
         "drewm/mailchimp-api": "^2.4",
         "yiisoft/yii2-redis": "^2.0",
-        "yiisoft/yii2-queue": "^2.0"
+        "yiisoft/yii2-queue": "^2.0",
+        "league/flysystem": "^1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
