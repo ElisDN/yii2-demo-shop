@@ -12,6 +12,7 @@ class SignupTest extends Unit
         $user = User::requestSignup(
             $username = 'username',
             $email = 'email@site.com',
+            $phone = '79001237744',
             $password = 'password'
         );
 

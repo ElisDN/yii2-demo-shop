@@ -65,11 +65,12 @@ class User extends ActiveRecord implements AggregateRoot
         $this->updated_at = time();
     }
 
-    public static function requestSignup(string $username, string $email, string $password): self
+    public static function requestSignup(string $username, string $email, string $phone, string $password): self
     {
         $user = new User();
         $user->username = $username;
         $user->email = $email;
+        $user->phone = $phone;
         $user->setPassword($password);
         $user->created_at = time();
         $user->status = self::STATUS_WAIT;

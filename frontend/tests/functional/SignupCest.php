@@ -44,6 +44,7 @@ class SignupCest
         $I->submitForm($this->formId, [
             'SignupForm[username]' => 'tester',
             'SignupForm[email]' => 'tester.email@example.com',
+            'SignupForm[phone]' => '79001237744',
             'SignupForm[password]' => 'tester_password',
         ]);
 
