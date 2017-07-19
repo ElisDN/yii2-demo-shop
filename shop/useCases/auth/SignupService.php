@@ -32,6 +32,7 @@ class SignupService
         $user = User::requestSignup(
             $form->username,
             $form->email,
+            $form->phone,
             $form->password
         );
         $this->transaction->wrap(function () use ($user) {
