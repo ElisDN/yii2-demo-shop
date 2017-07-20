@@ -38,6 +38,7 @@ class CategoriesForm extends Model
         ];
     }
 
+    // Зачем?!
     /*public function beforeValidate(): bool
     {
         $this->others = array_filter((array)$this->others);
