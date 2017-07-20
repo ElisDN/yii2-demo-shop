@@ -38,9 +38,9 @@ class CategoriesForm extends Model
         ];
     }
 
-    public function beforeValidate(): bool
+    /*public function beforeValidate(): bool
     {
         $this->others = array_filter((array)$this->others);
         return parent::beforeValidate();
-    }
+    }*/
 }
