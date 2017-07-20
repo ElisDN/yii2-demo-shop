@@ -87,7 +87,7 @@ use frontend\widgets\Shop\FeaturedProductsWidget;
 </div>
 
 <?php $this->registerJs('
-$(\'#slideshow0\').owlCarousel({
+$("#slideshow0").owlCarousel({
     items: 1,
     loop: true,
     autoplay:true,
@@ -99,8 +99,8 @@ $(\'#slideshow0\').owlCarousel({
 });') ?>
 
 <?php $this->registerJs('
-$(\'#carousel0\').owlCarousel({
-    items: 6,
+$("#carousel0").owlCarousel({
+    items: 5,
     loop: true,
     autoplay:true,
     autoplayTimeout:3000,

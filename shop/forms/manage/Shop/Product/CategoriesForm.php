@@ -37,4 +37,10 @@ class CategoriesForm extends Model
             ['others', 'default', 'value' => []],
         ];
     }
+
+    public function beforeValidate(): bool
+    {
+        $this->others = array_filter((array)$this->others);
+        return parent::beforeValidate();
+    }
 }
