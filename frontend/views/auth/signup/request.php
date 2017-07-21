@@ -1,7 +1,7 @@
 <?php
 
 /* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
+/* @var $form kartik\form\ActiveForm */
 /* @var $model \shop\forms\auth\SignupForm */
 
 use yii\helpers\Html;

@@ -46,18 +46,13 @@ AppAsset::register($this);
                     </button>
                     <ul class="dropdown-menu">
                         <li>
-                            <button class="currency-select btn btn-link btn-block" type="button" name="EUR">€ Euro
-                            </button>
+                            <button class="currency-select btn btn-link btn-block" type="button" name="EUR">€ Euro</button>
                         </li>
                         <li>
-                            <button class="currency-select btn btn-link btn-block" type="button" name="GBP">£ Pound
-                                Sterling
-                            </button>
+                            <button class="currency-select btn btn-link btn-block" type="button" name="GBP">£ Pound Sterling</button>
                         </li>
                         <li>
-                            <button class="currency-select btn btn-link btn-block" type="button" name="USD">$ US
-                                Dollar
-                            </button>
+                            <button class="currency-select btn btn-link btn-block" type="button" name="USD">$ US Dollar</button>
                         </li>
                     </ul>
                 </div>
@@ -67,17 +62,20 @@ AppAsset::register($this);
         </div>
         <div id="top-links" class="nav pull-right">
             <ul class="list-inline">
-                <li><a href="/index.php?route=information/contact"><i class="fa fa-phone"></i></a>
-                    <span class="hidden-xs hidden-sm hidden-md">123456789</span></li>
-                <li class="dropdown"><a href="/index.php?route=account/account" title="My Account"
-                                        class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span
-                                class="hidden-xs hidden-sm hidden-md">My Account</span> <span class="caret"></span></a>
+                <li><a href="tel:+79680252000"><i class="fa fa-phone"></i></a>
+                    <span class="hidden-xs hidden-sm hidden-md">+7(968)025-2000</span></li>
+                <li class="dropdown">
+                    <a href="<?= Url::to(['/cabinet']) ?>" title="My Account" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-user"></i>
+                        <span class="hidden-xs hidden-sm hidden-md">My Account</span>
+                        <span class="caret"></span>
+                    </a>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <?php if (Yii::$app->user->isGuest): ?>
                             <li><a href="<?= Html::encode(Url::to(['/auth/auth/login'])) ?>">Login</a></li>
                             <li><a href="<?= Html::encode(Url::to(['/auth/signup/request'])) ?>">Signup</a></li>
                         <?php else: ?>
-                            <li><a href="<?= Html::encode(Url::to(['/cabinet/default/index'])) ?>">Cabinet</a></li>
+                            <li><a href="<?= Html::encode(Url::to(['/cabinet'])) ?>">Cabinet</a></li>
                             <li><a href="<?= Html::encode(Url::to(['/auth/auth/logout'])) ?>" data-method="post">Logout</a></li>
                         <?php endif; ?>
                     </ul>
@@ -88,7 +86,7 @@ AppAsset::register($this);
                 <li><a href="<?= Url::to(['/shop/cart/index']) ?>" title="Shopping Cart"><i
                                 class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md">Shopping Cart</span></a>
                 </li>
-                <li><a href="/index.php?route=checkout/checkout" title="Checkout"><i
+                <li><a href="<?= Url::to('/shop/checkout/index') ?>" title="Checkout"><i
                                 class="fa fa-share"></i> <span class="hidden-xs hidden-sm hidden-md">Checkout</span></a>
                 </li>
             </ul>
@@ -100,9 +98,9 @@ AppAsset::register($this);
         <div class="row">
             <div class="col-sm-4">
                 <div id="logo">
-                    <a href="<?= Url::home() ?>"><img
-                                src="<?= Yii::getAlias('@web/image/logo.png') ?>" title="Your Store" alt="Your Store"
-                                class="img-responsive"/></a>
+                    <a href="<?= Url::home() ?>">
+                        <img src="<?= Yii::getAlias('@web/image/logo.png') ?>" title="Your Store" alt="Your Store" class="img-responsive"/>
+                    </a>
                 </div>
             </div>
             <div class="col-sm-5">
@@ -154,22 +152,18 @@ AppAsset::register($this);
             <div class="col-sm-3">
                 <h5>Information</h5>
                 <ul class="list-unstyled">
-                    <li><a href="/index.php?route=information/information&amp;information_id=4">About
-                            Us</a></li>
-                    <li><a href="/index.php?route=information/information&amp;information_id=6">Delivery
-                            Information</a></li>
-                    <li><a href="/index.php?route=information/information&amp;information_id=3">Privacy
-                            Policy</a></li>
-                    <li><a href="/index.php?route=information/information&amp;information_id=5">Terms
-                            &amp; Conditions</a></li>
+                    <li><a href="/index.php?route=information/information&amp;information_id=4">About Us</a></li>
+                    <li><a href="/index.php?route=information/information&amp;information_id=6">Delivery Information</a></li>
+                    <li><a href="/index.php?route=information/information&amp;information_id=3">Privacy Policy</a></li>
+                    <li><a href="/index.php?route=information/information&amp;information_id=5">Terms &amp; Conditions</a></li>
                 </ul>
             </div>
             <div class="col-sm-3">
                 <h5>Customer Service</h5>
                 <ul class="list-unstyled">
-                    <li><a href="/index.php?route=information/contact">Contact Us</a></li>
+                    <li><a href="<?= Url::to(['/contact']) ?>">Contact Us</a></li>
                     <li><a href="/index.php?route=account/return/add">Returns</a></li>
-                    <li><a href="/index.php?route=information/sitemap">Site Map</a></li>
+                    <li><a href="<?= Url::to(['/sitemap']) ?>">Site Map</a></li>
                 </ul>
             </div>
             <div class="col-sm-3">
@@ -184,10 +178,10 @@ AppAsset::register($this);
             <div class="col-sm-3">
                 <h5>My Account</h5>
                 <ul class="list-unstyled">
-                    <li><a href="/index.php?route=account/account">My Account</a></li>
-                    <li><a href="/index.php?route=account/order">Order History</a></li>
-                    <li><a href="/index.php?route=account/wishlist">Wish List</a></li>
-                    <li><a href="/index.php?route=account/newsletter">Newsletter</a></li>
+                    <li><a href="<?= Url::to(['/cabinet']) ?>">My Account</a></li>
+                    <li><a href="<?= Url::to(['/cabinet/order']) ?>">Order History</a></li>
+                    <li><a href="<?= Url::to(['/cabinet/wishlist/index']) ?>">Wish List</a></li>
+                    <li><a href="<?= Url::to(['/cabinet/newsletter']) ?>">Newsletter</a></li>
                 </ul>
             </div>
         </div>

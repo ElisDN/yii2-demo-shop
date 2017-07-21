@@ -41,4 +41,11 @@ class TagsForm extends Model
     {
         return array_filter(array_map('trim', preg_split('#\s*,\s*#i', $this->textNew)));
     }
+
+	// Зачем?!
+    /*public function beforeValidate(): bool
+    {
+        $this->existing = array_filter((array)$this->existing);
+        return parent::beforeValidate();
+    }*/
 }
