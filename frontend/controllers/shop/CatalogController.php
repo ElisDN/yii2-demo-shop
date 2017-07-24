@@ -9,6 +9,7 @@ use shop\readModels\Shop\BrandReadRepository;
 use shop\readModels\Shop\CategoryReadRepository;
 use shop\readModels\Shop\ProductReadRepository;
 use shop\readModels\Shop\TagReadRepository;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -115,7 +116,7 @@ class CatalogController extends Controller
     public function actionSearch()
     {
         $form = new SearchForm();
-        $form->load(\Yii::$app->request->queryParams);
+        $form->load( Yii::$app->request->queryParams);
         $form->validate();
 
         $dataProvider = $this->products->search($form);
@@ -141,6 +142,12 @@ class CatalogController extends Controller
 
         $cartForm = new AddToCartForm($product);
         $reviewForm = new ReviewForm();
+
+        ////////////////// todo adding Review
+	    if($reviewForm->load( $post = Yii::$app->request->post())){
+		    $product->addReview(Yii::$app->user->id, $post['ReviewForm']['vote'], $post['ReviewForm']['text']);
+	    }
+	    //////////////////
 
         return $this->render('product', [
             'product' => $product,
