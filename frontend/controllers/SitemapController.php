@@ -19,6 +19,7 @@ use yii\caching\Dependency;
 use yii\caching\TagDependency;
 use yii\helpers\Url;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
 class SitemapController extends Controller
@@ -103,6 +104,10 @@ class SitemapController extends Controller
 
     public function actionBlogPosts($start = 0): Response
     {
+        if ($start && $start % self:: != 0) {
+            throw new NotFoundHttpException('Page not found');
+        }
+        
         return $this->renderSitemap(['sitemap-blog-posts', $start], function () use ($start) {
             return $this->sitemap->generateMap(array_map(function (Post $post) {
                 return new MapItem(
@@ -138,6 +143,10 @@ class SitemapController extends Controller
 
     public function actionShopProducts($start = 0): Response
     {
+        if ($start && $start % self::ITEMS_PER_PAGE != 0) {
+            throw new NotFoundHttpException('Page not found');
+        }
+        
         return $this->renderSitemap(['sitemap-shop-products', $start], function () use ($start) {
             return $this->sitemap->generateMap(array_map(function (Product $product) {
                 return new MapItem(
