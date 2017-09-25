@@ -15,12 +15,10 @@ class RoleManager
 
     public function assign($userId, $name): void
     {
-        $am = $this->manager;
-        $am->revokeAll($userId);
-        if (!$role = $am->getRole($name)) {
+        if (!$role = $this->manager->getRole($name)) {
             throw new \DomainException('Role "' . $name . '" does not exist.');
         }
-        $am->revokeAll($userId);
-        $am->assign($role, $userId);
+        $this->manager->revokeAll($userId);
+        $this->manager->assign($role, $userId);
     }
 }
