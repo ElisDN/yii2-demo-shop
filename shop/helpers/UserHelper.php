@@ -2,12 +2,14 @@
 
 namespace shop\helpers;
 
-use shop\entities\User\User;
-use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use shop\entities\User\User;
 
 class UserHelper
 {
+    /**
+     * @return array
+     */
     public static function statusList(): array
     {
         return [
@@ -16,26 +18,35 @@ class UserHelper
         ];
     }
 
-    public static function statusName($status): string
+    /**
+     * @param $status
+     * @return null|string
+     */
+    public static function statusName($status): ?string
     {
-        return ArrayHelper::getValue(self::statusList(), $status);
+        return self::statusList()[$status] ?? null;
     }
 
+    /**
+     * @param $status
+     * @return string
+     */
     public static function statusLabel($status): string
     {
         switch ($status) {
             case User::STATUS_WAIT:
-                $class = 'label label-default';
+                $class = 'label-warning';
                 break;
             case User::STATUS_ACTIVE:
-                $class = 'label label-success';
+                $class = 'label-success';
                 break;
             default:
-                $class = 'label label-default';
+                $class = 'label-default';
+                break;
         }
 
-        return Html::tag('span', ArrayHelper::getValue(self::statusList(), $status), [
-            'class' => $class,
+        return Html::tag('span', self::statusName($status), [
+            'class' => "label {$class}"
         ]);
     }
 }
