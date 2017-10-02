@@ -31,17 +31,17 @@ h5 {
 	font-size: 12px;
 }
 h6 {
-	font-size: 10.2px;
+	font-size: 10px;
 }
 a {
-	color: #23a1d1;
+	color: #cb3626;
 }
 a:hover {
 	text-decoration: none;
 }
 legend {
 	font-size: 18px;
-	padding: 7px 0px
+	padding: 7px 0
 }
 label {
 	font-size: 12px;
@@ -74,15 +74,13 @@ div.required .control-label:before {
 .dropdown-menu li > a:hover {
 	text-decoration: none;
 	color: #ffffff;
-	background-color: #229ac8;
-	background-image: linear-gradient(to bottom, #23a1d1, #1f90bb);
-	background-repeat: repeat-x;
+	background: #bb2616 linear-gradient(to bottom, #cb3626, #9b0600) repeat-x;
 }
 /* top */
 #top {
 	background-color: #EEEEEE;
 	border-bottom: 1px solid #e2e2e2;
-	padding: 4px 0px 3px 0;
+	padding: 4px 0 3px 0;
 	margin: 0 0 20px 0;
 	min-height: 40px;
 }
@@ -97,9 +95,7 @@ div.required .control-label:before {
 #top #form-language .language-select:hover {
 	text-shadow: none;
 	color: #ffffff;
-	background-color: #229ac8;
-	background-image: linear-gradient(to bottom, #23a1d1, #1f90bb);
-	background-repeat: repeat-x;
+	background: #bb2616 linear-gradient(to bottom, #cb3626, #9b0600) repeat-x;
 }
 #top .btn-link, #top-links li, #top-links a {
 	color: #888;
@@ -154,8 +150,7 @@ div.required .control-label:before {
 	color: #FFF;
 }
 #cart.open > .btn {
-	background-image: none;
-	background-color: #FFFFFF;
+	background: #FFFFFF none;
 	border: 1px solid #E6E6E6;
 	color: #666;
 	box-shadow: none;
@@ -193,10 +188,8 @@ div.required .control-label:before {
 }
 /* menu */
 #menu {
-	background-color: #229ac8;
-	background-image: linear-gradient(to bottom, #23a1d1, #1f90bb);
-	background-repeat: repeat-x;
-	border-color: #1f90bb #1f90bb #145e7a;
+	background: #bb2616 linear-gradient(to bottom, #cb3626, #9b0600) repeat-x;
+	border-color: #9b0600 #9b0600 #800;
 	min-height: 40px;
 }
 #menu .nav > li > a {
@@ -243,9 +236,7 @@ div.required .control-label:before {
 #menu .see-all:hover, #menu .see-all:focus {
 	text-decoration: none;
 	color: #ffffff;
-	background-color: #229ac8;
-	background-image: linear-gradient(to bottom, #23a1d1, #1f90bb);
-	background-repeat: repeat-x;
+	background: #bb2616 linear-gradient(to bottom, #cb3626, #9b0600) repeat-x;
 }
 #menu #category {
 	float: left;
@@ -262,14 +253,12 @@ div.required .control-label:before {
 	color: #FFF;
 	padding: 2px 18px;
 	float: right;
-	background-color: #229ac8;
-	background-image: linear-gradient(to bottom, #23a1d1, #1f90bb);
-	background-repeat: repeat-x;
-	border-color: #1f90bb #1f90bb #145e7a;
+	background: #bb2616 linear-gradient(to bottom, #cb3626, #9b0600) repeat-x;
+	border-color: #9b0600 #9b0600 #800;
 }
 #menu .btn-navbar:hover, #menu .btn-navbar:focus, #menu .btn-navbar:active, #menu .btn-navbar.disabled, #menu .btn-navbar[disabled] {
 	color: #ffffff;
-	background-color: #229ac8;
+	background-color: #bb2616;
 }
 @media (min-width: 768px) {
 	#menu .dropdown:hover .dropdown-menu {
@@ -390,7 +379,7 @@ footer h5 {
 	font-size: 9px;
 }
 .btn-sm {
-	font-size: 10.2px;
+	font-size: 10px;
 }
 .btn-lg {
 	padding: 10px 16px;
@@ -403,7 +392,7 @@ footer h5 {
 	font-size: 9px;
 }
 .btn-group > .btn-sm {
-	font-size: 10.2px;
+	font-size: 10px;
 }
 .btn-group > .btn-lg {
 	font-size: 15px;
@@ -411,29 +400,22 @@ footer h5 {
 .btn-default {
 	color: #777;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-	background-color: #e7e7e7;
-	background-image: linear-gradient(to bottom, #eeeeee, #dddddd);
-	background-repeat: repeat-x;
+	background: #e7e7e7 linear-gradient(to bottom, #eeeeee, #dddddd) repeat-x;
 	border-color: #dddddd #dddddd #b3b3b3 #b7b7b7;
 }
 .btn-primary {
 	color: #ffffff;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	background-color: #229ac8;
-	background-image: linear-gradient(to bottom, #23a1d1, #1f90bb);
-	background-repeat: repeat-x;
-	border-color: #1f90bb #1f90bb #145e7a;
+	background: #bb2616 linear-gradient(to bottom, #cb3626, #9b0600) repeat-x;
+	border-color: #9b0600 #9b0600 #800;
 }
 .btn-primary:hover, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled] {
-	background-color: #1f90bb;
-	background-position: 0 -15px;
+	background: #9b0600 0 -15px;
 }
 .btn-warning {
 	color: #ffffff;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	background-color: #faa732;
-	background-image: linear-gradient(to bottom, #fbb450, #f89406);
-	background-repeat: repeat-x;
+	background: #faa732 linear-gradient(to bottom, #fbb450, #f89406) repeat-x;
 	border-color: #f89406 #f89406 #ad6704;
 }
 .btn-warning:hover, .btn-warning:active, .btn-warning.active, .btn-warning.disabled, .btn-warning[disabled] {
@@ -442,9 +424,7 @@ footer h5 {
 .btn-danger {
 	color: #ffffff;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	background-color: #da4f49;
-	background-image: linear-gradient(to bottom, #ee5f5b, #bd362f);
-	background-repeat: repeat-x;
+	background: #da4f49 linear-gradient(to bottom, #ee5f5b, #bd362f) repeat-x;
 	border-color: #bd362f #bd362f #802420;
 }
 .btn-danger:hover, .btn-danger:active, .btn-danger.active, .btn-danger.disabled, .btn-danger[disabled] {
@@ -453,9 +433,7 @@ footer h5 {
 .btn-success {
 	color: #ffffff;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	background-color: #5bb75b;
-	background-image: linear-gradient(to bottom, #62c462, #51a351);
-	background-repeat: repeat-x;
+	background: #5bb75b linear-gradient(to bottom, #62c462, #51a351) repeat-x;
 	border-color: #51a351 #51a351 #387038;
 }
 .btn-success:hover, .btn-success:active, .btn-success.active, .btn-success.disabled, .btn-success[disabled] {
@@ -464,14 +442,11 @@ footer h5 {
 .btn-info {
 	color: #ffffff;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	background-color: #df5c39;
-	background-image: linear-gradient(to bottom, #e06342, #dc512c);
-	background-repeat: repeat-x;
+	background: #df5c39 linear-gradient(to bottom, #e06342, #dc512c) repeat-x;
 	border-color: #dc512c #dc512c #a2371a;
 }
 .btn-info:hover, .btn-info:active, .btn-info.active, .btn-info.disabled, .btn-info[disabled] {
-	background-image: none;
-	background-color: #df5c39;
+	background: #df5c39 none;
 }
 .btn-link {
 	border-color: rgba(0, 0, 0, 0);
@@ -480,21 +455,17 @@ footer h5 {
 	border-radius: 0;
 }
 .btn-link, .btn-link:active, .btn-link[disabled] {
-	background-color: rgba(0, 0, 0, 0);
-	background-image: none;
+	background: rgba(0, 0, 0, 0) none;
 	box-shadow: none;
 }
 .btn-inverse {
 	color: #ffffff;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	background-color: #363636;
-	background-image: linear-gradient(to bottom, #444444, #222222);
-	background-repeat: repeat-x;
+	background: #363636 linear-gradient(to bottom, #444444, #222222) repeat-x;
 	border-color: #222222 #222222 #000000;
 }
 .btn-inverse:hover, .btn-inverse:active, .btn-inverse.active, .btn-inverse.disabled, .btn-inverse[disabled] {
-	background-color: #222222;
-	background-image: linear-gradient(to bottom, #333333, #111111);
+	background: #222222 linear-gradient(to bottom, #333333, #111111);
 }
 /* list group */
 .list-group a {
@@ -746,8 +717,7 @@ h2.price {
 
 /* Missing focus and border color to overwrite bootstrap */
 .btn-info:hover, .btn-info:active, .btn-info.active, .btn-info.disabled, .btn-info[disabled] {
-    background-image: none;
-    background-color: #df5c39;
+	background: #df5c39 none;
 }
 
 .auth-clients {
@@ -805,7 +775,7 @@ h2.price {
 }
 .owl-dots .owl-dot {
 	display: inline-block;
-	margin: 0px 6px;
+	margin: 0 6px;
 }
 .owl-dots .owl-dot span {
 	display: block;
@@ -838,4 +808,8 @@ h2.price {
 
 #comments .comment-item .comment-item .comment-item .comment-item .comment-item .margin {
 	margin-left: 0;
+}
+
+#logo img{
+	height: 50px
 }
