@@ -144,7 +144,7 @@ class Order extends ActiveRecord
 
     public function getDeliveryMethod(): ActiveQuery
     {
-        return $this->hasMany(User::class, ['id' => 'user_id']);
+        return $this->hasMany(DeliveryMethod::class, ['id' => 'delivery_method_id']);
     }
 
     public function getItems(): ActiveQuery
