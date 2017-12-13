@@ -38,7 +38,11 @@ class Review extends ActiveRecord
 
     public function draft(): void
     {
+<<<<<<< HEAD
         $this->active = true;
+=======
+        $this->active = false;
+>>>>>>> d08247c609e5dba11230429d7d547afccee64093
     }
 
     public function isActive(): bool
