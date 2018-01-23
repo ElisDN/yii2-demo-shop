@@ -18,7 +18,7 @@ class m170519_212444_create_shop_reviews_table extends Migration
             'active' => $this->boolean()->notNull(),
         ], $tableOptions);
 
-        $this->createIndex('{{%idx-shop_reviews-product_id}}', '{{%shop_reviews}}', 'product');
+        $this->createIndex('{{%idx-shop_reviews-product_id}}', '{{%shop_reviews}}', 'product_id');
         $this->createIndex('{{%idx-shop_reviews-user_id}}', '{{%shop_reviews}}', 'user_id');
 
         $this->addForeignKey('{{%fk-shop_reviews-product_id}}', '{{%shop_reviews}}', 'product_id', '{{%shop_products}}', 'id', 'CASCADE', 'RESTRICT');
