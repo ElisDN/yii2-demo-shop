@@ -29,13 +29,13 @@ class Page extends ActiveRecord
 
     public static function create($title, $slug, $content, Meta $meta): self
     {
-        $category = new static();
-        $category->title = $title;
-        $category->slug = $slug;
-        $category->title = $title;
-        $category->content = $content;
-        $category->meta = $meta;
-        return $category;
+        $page = new static();
+        $page->title = $title;
+        $page->slug = $slug;
+        $page->title = $title;
+        $page->content = $content;
+        $page->meta = $meta;
+        return $page;
     }
 
     public function edit($title, $slug, $content, Meta $meta): void
