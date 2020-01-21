@@ -4,14 +4,14 @@ namespace frontend\urls;
 
 use shop\entities\Page;
 use shop\readModels\PageReadRepository;
-use yii\base\InvalidParamException;
-use yii\base\Object;
+use yii\base\InvalidArgumentException;
+use yii\base\BaseObject;
 use yii\caching\Cache;
 use yii\helpers\ArrayHelper;
 use yii\web\UrlNormalizerRedirectException;
 use yii\web\UrlRuleInterface;
 
-class PageUrlRule extends Object implements UrlRuleInterface
+class PageUrlRule extends BaseObject implements UrlRuleInterface
 {
     private $repository;
     private $cache;
@@ -49,7 +49,7 @@ class PageUrlRule extends Object implements UrlRuleInterface
     {
         if ($route == 'page/view') {
             if (empty($params['id'])) {
-                throw new InvalidParamException('Empty id.');
+                throw new InvalidArgumentException('Empty id.');
             }
             $id = $params['id'];
 
@@ -61,7 +61,7 @@ class PageUrlRule extends Object implements UrlRuleInterface
             });
 
             if (!$url) {
-                throw new InvalidParamException('Undefined id.');
+                throw new InvalidArgumentException('Undefined id.');
             }
 
             unset($params['id']);
