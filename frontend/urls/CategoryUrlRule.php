@@ -4,15 +4,15 @@ namespace frontend\urls;
 
 use shop\entities\Shop\Category;
 use shop\readModels\Shop\CategoryReadRepository;
-use yii\base\InvalidParamException;
-use yii\base\Object;
+use yii\base\InvalidArgumentException;
+use yii\base\BaseObject;
 use yii\caching\Cache;
 use yii\caching\TagDependency;
 use yii\helpers\ArrayHelper;
 use yii\web\UrlNormalizerRedirectException;
 use yii\web\UrlRuleInterface;
 
-class CategoryUrlRule extends Object implements UrlRuleInterface
+class CategoryUrlRule extends BaseObject implements UrlRuleInterface
 {
     public $prefix = 'catalog';
 
@@ -55,7 +55,7 @@ class CategoryUrlRule extends Object implements UrlRuleInterface
     {
         if ($route == 'shop/catalog/category') {
             if (empty($params['id'])) {
-                throw new InvalidParamException('Empty id.');
+                throw new InvalidArgumentException('Empty id.');
             }
             $id = $params['id'];
 
@@ -67,7 +67,7 @@ class CategoryUrlRule extends Object implements UrlRuleInterface
             }, null, new TagDependency(['tags' => ['categories']]));
 
             if (!$url) {
-                throw new InvalidParamException('Undefined id.');
+                throw new InvalidArgumentException('Undefined id.');
             }
 
             $url = $this->prefix . '/' . $url;
